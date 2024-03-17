@@ -1,0 +1,47 @@
+.hero {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 119px;
+}
+
+.hero-top{
+    display: flex;
+    flex-direction: row;
+}
+
+.whoami {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 119px;
+    gap: 30px;
+}
+
+.whatdoido {
+    display: flex;
+    flex-direction: row;
+}
+
+.whatdoido-left {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 119px;
+    gap: 30px;
+}
+
+.whatdoido-right {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 119px;
+}
+
+.skills {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 119px;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 119px;
+}
