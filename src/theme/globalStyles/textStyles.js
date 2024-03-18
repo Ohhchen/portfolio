@@ -36,6 +36,13 @@ const textStyles = {
         letterSpacing: '-1%',
         fontFamily: "Anybody",
     },
+    p_s: {
+        fontSize: ['36px', '48px', '16px'],
+        fontWeight: 'light',
+        lineHeight: '110%',
+        letterSpacing: '-1%',
+        fontFamily: "Anybody",
+    },
 }
 
 export default textStyles

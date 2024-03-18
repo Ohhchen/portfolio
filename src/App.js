@@ -12,14 +12,16 @@ function App() {
   const theme = extendTheme({
     textStyles,
     colors,
-    components: { 
+    components: {
       Button: buttonTheme,
     },
   })
 
   return (
     <ChakraProvider theme={theme}>
-      <LandingPage></LandingPage>
+      <div className='App'>
+        <LandingPage></LandingPage>
+      </div>
     </ChakraProvider>
   );
 }
