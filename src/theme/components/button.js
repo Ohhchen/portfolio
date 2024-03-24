@@ -70,6 +70,23 @@ const secondaryClicked = defineStyle({
     }
 })
 
+const tiertiary = defineStyle({
+    fontFamily: 'Anybody',
+    fontSize: '20px',
+    fontWeight: 'normal',
+    width: 'fit-content',
+    height: 'fit-content',
+    bg: 'blue.dark',
+    color: 'base.white',
+    padding: '20px 30px',
+    borderRadius: '0px',
+    border: '1px solid',
+    borderColor: 'blue.dark',
+    _hover: {
+        boxShadow: '#000000 10px 8px',
+    }
+})
+
 const link = defineStyle({
     fontFamily: 'Anybody',
     fontSize: '64px',
@@ -86,7 +103,7 @@ const link = defineStyle({
 
 
 export const buttonTheme = defineStyleConfig({
-    variants: { primary, secondary, primaryClicked, secondaryClicked, link },
+    variants: { primary, secondary, primaryClicked, secondaryClicked, link, tiertiary },
 })
 
 export default buttonTheme

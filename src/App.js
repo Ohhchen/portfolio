@@ -6,6 +6,7 @@ import LandingPage from './Components/LandingPage';
 import textStyles from './theme/globalStyles/textStyles';
 import colors from './theme/globalStyles/colors';
 import buttonTheme from './theme/components/button'
+import { listTheme } from './theme/components/list'
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
     colors,
     components: {
       Button: buttonTheme,
+      List: listTheme
     },
   })
 

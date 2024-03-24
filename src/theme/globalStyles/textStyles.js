@@ -4,7 +4,7 @@ const textStyles = {
         // you can also use responsive styles
         fontSize: ['48px', '72px', '200px'],
         fontWeight: 'bold',
-        lineHeight: '110%',
+        lineHeight: '100%',
         letterSpacing: '-2%',
         fontFamily: "Anybody",
     },
@@ -14,6 +14,7 @@ const textStyles = {
         lineHeight: '110%',
         letterSpacing: '-1%',
         fontFamily: "Anybody",
+        textWrap: 'pretty'
     },
     h3: {
         fontSize: ['36px', '48px', '48px'],
@@ -22,9 +23,25 @@ const textStyles = {
         letterSpacing: '-1%',
         fontFamily: "Anybody",
     },
+    h4_carousel: {
+        fontSize: ['36px', '48px', '36px'],
+        fontWeight: 'normal',
+        lineHeight: '110%',
+        letterSpacing: '-1%',
+        fontFamily: "Anybody",
+        textWrap:'nowrap'
+    },
     h4: {
         fontSize: ['36px', '48px', '36px'],
-        fontWeight: 'light',
+        fontWeight: 'normal',
+        lineHeight: '110%',
+        letterSpacing: '-1%',
+        fontFamily: "Anybody",
+        textWrap:'pretty'
+    },
+    skills: {
+        fontSize: ['36px', '48px', '24px'],
+        fontWeight: 'normal',
         lineHeight: '110%',
         letterSpacing: '-1%',
         fontFamily: "Anybody",
@@ -32,6 +49,14 @@ const textStyles = {
     p: {
         fontSize: ['36px', '48px', '24px'],
         fontWeight: 'light',
+        lineHeight: '110%',
+        letterSpacing: '-1%',
+        fontFamily: "Anybody",
+        textWrap: 'pretty'
+    },
+    p_bold: {
+        fontSize: ['36px', '48px', '16px'],
+        fontWeight: 'semibold',
         lineHeight: '110%',
         letterSpacing: '-1%',
         fontFamily: "Anybody",
