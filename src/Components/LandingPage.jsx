@@ -3,6 +3,8 @@ import './styles/LandingPage.css'
 import { useState } from "react"
 import { motion } from "framer-motion"
 import Skills from './Skills'
+import CEDaRCMS from "./CEDaRCMS"
+import CityPoems from "./CityPoems"
 import landingPortrait from '../Assets/Landing portrait/PortraitWbackground.png'
 import aboutPortrait from '../Assets/About Portrait/PortraitWBackground.png'
 import footerPortrait from '../Assets/Footer Portrait/PortraitWBackground.png'
@@ -27,6 +29,11 @@ const LandingPage = ({ }) => {
     const [softSkillsList, setSoftSkillsList] = useState()
     const [designSkillsList, setDesignSkillsList] = useState()
     const [devSkillsList, setDevSkillsList] = useState()
+    const [projectSelected, setProjectSelected] = useState(false)
+    const [cedarCms, setCedarCms] = useState(false)
+    const [cityPoems, setCityPoems] = useState(false)
+    const [hopelandSystems, setHopelandSystems] = useState(false)
+    const [sxgTwineGame, setSxgTwineGame] = useState(false)
 
     const cardDetails = {
         0: {
@@ -105,416 +112,478 @@ const LandingPage = ({ }) => {
         }
     }
 
-    return (
+    return (<>
         <Box bg='base.white'>
-            <div className="hero">
-                <div className="hero-top">
-                    <div>
-                        <img src={landingPortrait} style={{ width: '900px' }} />
-                    </div>
+            {!projectSelected &&
+                <div className="hero">
                     <div className="hero-top">
-                        <Text textStyle='h1' color='base.white'>Olivia Chen</Text>
-                    </div>
-                </div>
-                <div className="carousel-container">
-                    <div className="carousel-track">
-                        <div className="carousel-card">
-                            {Object.keys(cardDetails).map((detailKey) => {
-                                return (
-                                    <Text textStyle='h4_carousel' color='base.white'>{cardDetails[detailKey].title}</Text>
-                                );
-                            })}
+                        <div>
+                            <img src={landingPortrait} style={{ width: '900px' }} />
+                        </div>
+                        <div className="hero-top">
+                            <Text textStyle='h1' color='base.white'>Olivia Chen</Text>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div className="whoami">
-                <div className="whoami-left">
-                    <div>
-                        <Text textStyle='h2' color='blue.dark'>Who am I?</Text>
+                    <div className="carousel-container">
+                        <div className="carousel-track">
+                            <div className="carousel-card">
+                                {Object.keys(cardDetails).map((detailKey) => {
+                                    return (
+                                        <Text textStyle='h4_carousel' color='base.white'>{cardDetails[detailKey].title}</Text>
+                                    );
+                                })}
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <Text textStyle='p' color='blue.dark'>A design enthusiast. A team leader, based in Vancouver, BC Canada</Text>
-                    </div>
-                    <div>
-                        <Text textStyle='p' color='blue.dark'>I am most experienced as a Project Manager but I worked mostly in small teams where I need to help out with different aspects of the project, so I also have UX/UI designa and web develpment experience.</Text>
-                    </div>
-                </div>
-                <div className="whoami-right">
-                    <img src={aboutPortrait} />
-                </div>
-            </div>
-            <div className="whatdoido">
-                <Box bg='blue.dark'>
-                    <div className="whatdoido-left">
+                </div>}
+            {!projectSelected &&
+                <div className="whoami">
+                    <div className="whoami-left">
                         <div>
-                            <Text textStyle='h2' color='base.white'>What do I do?</Text>
-                            <Text textStyle='p_s' color='base.white'>Start by selecting one of the domains below</Text>
+                            <Text textStyle='h2' color='blue.dark'>Who am I?</Text>
                         </div>
                         <div>
+                            <Text textStyle='p' color='blue.dark'>A design enthusiast. A team leader, based in Vancouver, BC Canada</Text>
+                        </div>
+                        <div>
+                            <Text textStyle='p' color='blue.dark'>I am most experienced as a Project Manager but I worked mostly in small teams where I need to help out with different aspects of the project, so I also have UX/UI designa and web develpment experience.</Text>
+                        </div>
+                    </div>
+                    <div className="whoami-right">
+                        <img src={aboutPortrait} />
+                    </div>
+                </div>}
+            {!projectSelected &&
+                <div className="whatdoido">
+                    <Box bg='blue.dark'>
+                        <div className="whatdoido-left">
+                            <div>
+                                <Text textStyle='h2' color='base.white'>What do I do?</Text>
+                                <Text textStyle='p_s' color='base.white'>Start by selecting one of the domains below</Text>
+                            </div>
+                            <div>
+                                <div className="whatdoido-examples">
+                                    <div>
+                                        <Text textStyle='h4' color='base.white'>Here are some examples of what I do</Text>
+                                    </div>
+                                    <div className="whatdoido-examples-buttons">
+                                        <Button variant={projectManagement ? 'primaryClicked' : 'primary'}
+                                            onClick={() => {
+                                                setProjectManagement(true);
+                                                setDesign(false);
+                                                setWebDev(false);
+                                                setBranding(false);
+                                            }}>Project management</Button>
+                                        <Button variant={design ? 'primaryClicked' : 'primary'}
+                                            onClick={() => {
+                                                setDesign(true);
+                                                setProjectManagement(false);
+                                                setWebDev(false);
+                                                setBranding(false);
+                                            }}>UX/UI design</Button>
+                                        <Button variant={webDev ? 'primaryClicked' : 'primary'}
+                                            onClick={() => {
+                                                setWebDev(true);
+                                                setDesign(false);
+                                                setProjectManagement(false);
+                                                setBranding(false);
+                                            }}>Web development</Button>
+                                        <Button variant={branding ? 'primaryClicked' : 'primary'}
+                                            onClick={() => {
+                                                setBranding(true);
+                                                setWebDev(false);
+                                                setDesign(false);
+                                                setProjectManagement(false);
+                                            }}>Branding</Button>
+                                    </div>
+                                </div>
+                            </div>
                             <div className="whatdoido-examples">
                                 <div>
-                                    <Text textStyle='h4' color='base.white'>Here are some examples of what I do</Text>
+                                    <Text textStyle='h4' color='base.white'>Here are some examples of what I would like to do more of</Text>
                                 </div>
                                 <div className="whatdoido-examples-buttons">
-                                    <Button variant={projectManagement ? 'primaryClicked' : 'primary'}
-                                        onClick={() => {
-                                            setProjectManagement(true);
-                                            setDesign(false);
-                                            setWebDev(false);
-                                            setBranding(false);
-                                        }}>Project management</Button>
-                                    <Button variant={design ? 'primaryClicked' : 'primary'}
-                                        onClick={() => {
-                                            setDesign(true);
-                                            setProjectManagement(false);
-                                            setWebDev(false);
-                                            setBranding(false);
-                                        }}>UX/UI design</Button>
-                                    <Button variant={webDev ? 'primaryClicked' : 'primary'}
-                                        onClick={() => {
-                                            setWebDev(true);
-                                            setDesign(false);
-                                            setProjectManagement(false);
-                                            setBranding(false);
-                                        }}>Web development</Button>
-                                    <Button variant={branding ? 'primaryClicked' : 'primary'}
-                                        onClick={() => {
-                                            setBranding(true);
-                                            setWebDev(false);
-                                            setDesign(false);
-                                            setProjectManagement(false);
-                                        }}>Branding</Button>
+                                    <Button variant='primary'>Illustration</Button>
+                                    <Button variant='primary'>Data analysis</Button>
                                 </div>
                             </div>
                         </div>
-                        <div className="whatdoido-examples">
-                            <div>
-                                <Text textStyle='h4' color='base.white'>Here are some examples of what I would like to do more of</Text>
-                            </div>
-                            <div className="whatdoido-examples-buttons">
-                                <Button variant='primary'>Illustration</Button>
-                                <Button variant='primary'>Data analysis</Button>
-                            </div>
-                        </div>
-                    </div>
-                </Box>
-                <div className="whatdoido-right">
-                    {projectManagement &&
-                        <div className="whatdoido-right-selection">
-                            <motion.div whileHover={{ scale: 1.2 }}>
-                                <Button variant='link'>CEDaR CMS</Button>
-                            </motion.div>
-                            <motion.div whileHover={{ scale: 1.2 }}>
-                                <Button variant='link'>City Poems Project</Button>
-                            </motion.div>
-                            <motion.div whileHover={{ scale: 1.2 }}>
-                                <Button variant='link'>SXG Twine Game</Button>
-                            </motion.div>
-                        </div>
-                    }
-                    {design &&
-                        <div className="whatdoido-right-selection">
-                            <motion.div whileHover={{ scale: 1.2 }}>
-                                <Button variant='link'>CEDaR CMS</Button>
-                            </motion.div>
-                            <motion.div whileHover={{ scale: 1.2 }}>
-                                <Button variant='link'>City Poems Project</Button>
-                            </motion.div>
-                            <motion.div whileHover={{ scale: 1.2 }}>
-                                <Button variant='link'>Hopeland Systems</Button>
-                            </motion.div>
-                            <motion.div whileHover={{ scale: 1.2 }}>
-                                <Button variant='link'>SXG Twine Game</Button>
-                            </motion.div>
-                        </div>
-                    }
-                    {webDev &&
-                        <div className="whatdoido-right-selection">
-                            <motion.div whileHover={{ scale: 1.2 }}>
-                                <Button variant='link'>CEDaR CMS</Button>
-                            </motion.div>
-                            <motion.div whileHover={{ scale: 1.2 }}>
-                                <Button variant='link'>Smímeyale Socials</Button>
-                            </motion.div>
-                            <motion.div whileHover={{ scale: 1.2 }}>
-                                <Button variant='link'>Hopeland Systems</Button>
-                            </motion.div>
-                            <motion.div whileHover={{ scale: 1.2 }}>
-                                <Button variant='link'>SXG Twine Game</Button>
-                            </motion.div>
-                        </div>
-                    }
-                    {branding &&
-                        <div className="whatdoido-right-selection">
-                            <motion.div whileHover={{ scale: 1.2 }}>
-                                <Button variant='link'>Smímeyale Socials</Button>
-                            </motion.div>
-                        </div>
-                    }
-                </div>
-            </div>
-            <div className="skills">
-                <div className="skills-top">
-                    <div>
-                        <Text textStyle='h2' color='blue.dark'>Skills</Text>
-                    </div>
-                    <div className="skills-top-buttons">
-                        <Button variant={hardSkills ? 'secondaryClicked' : 'secondary'}
-                            onClick={() => {
-                                filterSkills('hardSkills');
-                                setHardSkills(true);
-                                setDesignSkills(false);
-                                setSoftSkills(false);
-                                setDevSkills(false);
-                                setAllSkills(false);
-                            }}>Hard Skills</Button>
-                        <Button variant={softSkills ? 'secondaryClicked' : 'secondary'}
-                            onClick={() => {
-                                filterSkills('softSkills');
-                                setHardSkills(false);
-                                setDesignSkills(false);
-                                setSoftSkills(true);
-                                setDevSkills(false);
-                                setAllSkills(false);
-                            }}>Soft Skills</Button>
-                        <Button variant={designSkills ? 'secondaryClicked' : 'secondary'}
-                            onClick={() => {
-                                filterSkills('design');
-                                setHardSkills(false);
-                                setDesignSkills(true);
-                                setSoftSkills(false);
-                                setDevSkills(false);
-                                setAllSkills(false);
-                            }}>Design</Button>
-                        <Button variant={devSkills ? 'secondaryClicked' : 'secondary'}
-                            onClick={() => {
-                                filterSkills('dev');
-                                setHardSkills(false);
-                                setDesignSkills(false);
-                                setSoftSkills(false);
-                                setDevSkills(true);
-                                setAllSkills(false);
-                            }}>Development</Button>
-                        <Button variant={'tiertiary'}
-                            onClick={() => {
-                                setHardSkills(false);
-                                setDesignSkills(false);
-                                setSoftSkills(false);
-                                setDevSkills(false);
-                                setAllSkills(true);
-                            }}>Clear Filters</Button>
-                    </div>
-                </div>
-                <div className="skills-bottom">
-                    {allSkills &&
-                        <div className="skills-bottom-container">
-                            <List variant='skills'>
-                                <div style={{ padding: '10px', background: '#005FED' }}>
-                                    <Text textStyle='p_bold' color='base.white'>I would say I'm excellent with: </Text>
-                                </div>
-                                {Skills.map((skill, index) =>
-                                    skill.size == 'large' &&
-                                    <ListItem key={index}>
-                                        <div className="text-stretcher">
-                                            <Text textStyle='skills' color='bright.orange'>{skill.text}</Text>
-                                        </div>
-                                    </ListItem>
-                                )}
-                            </List>
-                            <List variant='skills'>
-                                <div style={{ padding: '10px', background: '#005FED' }}>
-                                    <Text textStyle='p_bold' color='base.white'>I would say I'm great with:</Text>
-                                </div>
-                                {Skills.map((skill, index) =>
-                                    skill.size == 'mid' &&
-                                    <ListItem key={index}>
-                                        <div className="text-stretcher">
-                                            <Text textStyle='skills' color='bright.green'>{skill.text}</Text>
-                                        </div>
-                                    </ListItem>
-                                )}
-                            </List>
-                            <List variant='skills'>
-                                <div style={{ padding: '10px', background: '#005FED' }}>
-                                    <Text textStyle='p_bold' color='base.white'>I would say I know enough of:</Text>
-                                </div>
-                                {Skills.map((skill, index) =>
-                                    skill.size == 'small' &&
-                                    <ListItem key={index}>
-                                        <div className="text-stretcher">
-                                            <Text textStyle='skills' color='bright.yellow'>{skill.text}</Text>
-                                        </div>
-                                    </ListItem>
-                                )}
-                            </List>
-                        </div>
-                    }
-                    {hardSkills &&
-                        <div className="skills-bottom-container">
-                            <List variant='skills'>
-                                <motion.div style={{ padding: '10px', background: '#005FED' }}>
-                                    <Text textStyle='p_bold' color='base.white'>I would say I'm excellent with: </Text>
+                    </Box>
+                    <div className="whatdoido-right">
+                        {projectManagement &&
+                            <div className="whatdoido-right-selection">
+                                <motion.div whileHover={{ scale: 1.2 }}>
+                                    <Button variant='link'
+                                        onClick={() => {
+                                            setProjectSelected(true);
+                                            setCedarCms(true);
+                                        }}>CEDaR CMS</Button>
                                 </motion.div>
-                                {hardSkillsList.map((skill, index) =>
-                                    skill.size == 'large' &&
-                                    <ListItem key={index}>
-                                        <div className="text-stretcher">
-                                            <Text textStyle='skills' color='bright.orange'>{skill.text}</Text>
-                                        </div>
-                                    </ListItem>
-                                )}
-                            </List>
-                            <List variant='skills'>
-                                <div style={{ padding: '10px', background: '#005FED' }}>
-                                    <Text textStyle='p_bold' color='base.white'>I would say I'm great with:</Text>
-                                </div>
-                                {hardSkillsList.map((skill, index) =>
-                                    skill.size == 'mid' &&
-                                    <ListItem key={index}>
-                                        <div className="text-stretcher">
-                                            <Text textStyle='skills' color='bright.green'>{skill.text}</Text>
-                                        </div>
-                                    </ListItem>
-                                )}
-                            </List>
-                            <List variant='skills'>
-                                <div style={{ padding: '10px', background: '#005FED' }}>
-                                    <Text textStyle='p_bold' color='base.white'>I would say I know enough of:</Text>
-                                </div>
-                                {hardSkillsList.map((skill, index) =>
-                                    skill.size == 'small' &&
-                                    <ListItem key={index}>
-                                        <div className="text-stretcher">
-                                            <Text textStyle='skills' color='bright.yellow'>{skill.text}</Text>
-                                        </div>
-                                    </ListItem>
-                                )}
-                            </List>
+                                <motion.div whileHover={{ scale: 1.2 }}>
+                                    <Button variant='link'
+                                        onClick={() => {
+                                            setProjectSelected(true);
+                                            setCityPoems(true);
+                                        }}>City Poems Project</Button>
+                                </motion.div>
+                                <motion.div whileHover={{ scale: 1.2 }}>
+                                    <Button variant='link'
+                                        onClick={() => {
+                                            setProjectSelected(true);
+                                            setSxgTwineGame(true);
+                                        }}>SXG Twine Game</Button>
+                                </motion.div>
+                            </div>
+                        }
+                        {design &&
+                            <div className="whatdoido-right-selection">
+                                <motion.div whileHover={{ scale: 1.2 }}>
+                                    <Button variant='link'
+                                        onClick={() => {
+                                            setProjectSelected(true);
+                                            setCedarCms(true);
+                                        }}>CEDaR CMS</Button>
+                                </motion.div>
+                                <motion.div whileHover={{ scale: 1.2 }}>
+                                    <Button variant='link'
+                                        onClick={() => {
+                                            setProjectSelected(true);
+                                            setCityPoems(true);
+                                        }}>City Poems Project</Button>
+                                </motion.div>
+                                <motion.div whileHover={{ scale: 1.2 }}>
+                                    <Button variant='link'
+                                        onClick={() => {
+                                            setProjectSelected(true);
+                                            setHopelandSystems(true);
+                                        }}>Hopeland Systems</Button>
+                                </motion.div>
+                                <motion.div whileHover={{ scale: 1.2 }}>
+                                    <Button variant='link'
+                                        onClick={() => {
+                                            setProjectSelected(true);
+                                            setSxgTwineGame(true);
+                                        }}>SXG Twine Game</Button>
+                                </motion.div>
+                            </div>
+                        }
+                        {webDev &&
+                            <div className="whatdoido-right-selection">
+                                <motion.div whileHover={{ scale: 1.2 }}>
+                                    <Button variant='link'
+                                        onClick={() => {
+                                            setProjectSelected(true);
+                                            setCedarCms(true);
+                                        }}>CEDaR CMS</Button>
+                                </motion.div>
+                                <motion.div whileHover={{ scale: 1.2 }}>
+                                    <Button variant='link'
+                                        onClick={() => {
+                                            setProjectSelected(true)
+                                        }}>Smímeyale Socials</Button>
+                                </motion.div>
+                                <motion.div whileHover={{ scale: 1.2 }}>
+                                    <Button variant='link'
+                                        onClick={() => {
+                                            setProjectSelected(true);
+                                            setHopelandSystems(true);
+                                        }}>Hopeland Systems</Button>
+                                </motion.div>
+                                <motion.div whileHover={{ scale: 1.2 }}>
+                                    <Button variant='link'
+                                        onClick={() => {
+                                            setProjectSelected(true);
+                                            setSxgTwineGame(true);
+                                        }}>SXG Twine Game</Button>
+                                </motion.div>
+                            </div>
+                        }
+                        {branding &&
+                            <div className="whatdoido-right-selection">
+                                <motion.div whileHover={{ scale: 1.2 }}>
+                                    <Button variant='link'
+                                        onClick={() => {
+                                            setProjectSelected(true)
+                                        }}>Smímeyale Socials</Button>
+                                </motion.div>
+                            </div>
+                        }
+                    </div>
+                </div>}
+            {!projectSelected &&
+                <div className="skills">
+                    <div className="skills-top">
+                        <div>
+                            <Text textStyle='h2' color='blue.dark'>Skills</Text>
                         </div>
-                    }
-                    {softSkills &&
-                        <div className="skills-bottom-container">
-                            <List variant='skills'>
-                                <div style={{ padding: '10px', background: '#005FED' }}>
-                                    <Text textStyle='p_bold' color='base.white'>I would say I'm excellent with: </Text>
-                                </div>
-                                {softSkillsList.map((skill, index) =>
-                                    skill.size == 'large' &&
-                                    <ListItem key={index}>
-                                        <div className="text-stretcher">
-                                            <Text textStyle='skills' color='bright.orange'>{skill.text}</Text>
-                                        </div>
-                                    </ListItem>
-                                )}
-                            </List>
-                            <List variant='skills'>
-                                <div style={{ padding: '10px', background: '#005FED' }}>
-                                    <Text textStyle='p_bold' color='base.white'>I would say I'm great with:</Text>
-                                </div>
-                                {softSkillsList.map((skill, index) =>
-                                    skill.size == 'mid' &&
-                                    <ListItem key={index}>
-                                        <div className="text-stretcher">
-                                            <Text textStyle='skills' color='bright.green'>{skill.text}</Text>
-                                        </div>
-                                    </ListItem>
-                                )}
-                            </List>
+                        <div className="skills-top-buttons">
+                            <Button variant={hardSkills ? 'secondaryClicked' : 'secondary'}
+                                onClick={() => {
+                                    filterSkills('hardSkills');
+                                    setHardSkills(true);
+                                    setDesignSkills(false);
+                                    setSoftSkills(false);
+                                    setDevSkills(false);
+                                    setAllSkills(false);
+                                }}>Hard Skills</Button>
+                            <Button variant={softSkills ? 'secondaryClicked' : 'secondary'}
+                                onClick={() => {
+                                    filterSkills('softSkills');
+                                    setHardSkills(false);
+                                    setDesignSkills(false);
+                                    setSoftSkills(true);
+                                    setDevSkills(false);
+                                    setAllSkills(false);
+                                }}>Soft Skills</Button>
+                            <Button variant={designSkills ? 'secondaryClicked' : 'secondary'}
+                                onClick={() => {
+                                    filterSkills('design');
+                                    setHardSkills(false);
+                                    setDesignSkills(true);
+                                    setSoftSkills(false);
+                                    setDevSkills(false);
+                                    setAllSkills(false);
+                                }}>Design</Button>
+                            <Button variant={devSkills ? 'secondaryClicked' : 'secondary'}
+                                onClick={() => {
+                                    filterSkills('dev');
+                                    setHardSkills(false);
+                                    setDesignSkills(false);
+                                    setSoftSkills(false);
+                                    setDevSkills(true);
+                                    setAllSkills(false);
+                                }}>Development</Button>
+                            <Button variant={'tiertiary'}
+                                onClick={() => {
+                                    setHardSkills(false);
+                                    setDesignSkills(false);
+                                    setSoftSkills(false);
+                                    setDevSkills(false);
+                                    setAllSkills(true);
+                                }}>Clear Filters</Button>
                         </div>
-                    }
-                    {designSkills &&
-                        <div className="skills-bottom-container">
-                            <List variant='skills'>
-                                <div style={{ padding: '10px', background: '#005FED' }}>
-                                    <Text textStyle='p_bold' color='base.white'>I would say I'm excellent with: </Text>
-                                </div>
-                                {designSkillsList.map((skill, index) =>
-                                    skill.size == 'large' &&
-                                    <ListItem key={index}>
-                                        <div className="text-stretcher">
-                                            <Text textStyle='skills' color='bright.orange'>{skill.text}</Text>
-                                        </div>
-                                    </ListItem>
-                                )}
-                            </List>
-                            <List variant='skills'>
-                                <div style={{ padding: '10px', background: '#005FED' }}>
-                                    <Text textStyle='p_bold' color='base.white'>I would say I'm great with:</Text>
-                                </div>
-                                {designSkillsList.map((skill, index) =>
-                                    skill.size == 'mid' &&
-                                    <ListItem key={index}>
-                                        <div className="text-stretcher">
-                                            <Text textStyle='skills' color='bright.green'>{skill.text}</Text>
-                                        </div>
-                                    </ListItem>
-                                )}
-                            </List>
-                            <List variant='skills'>
-                                <div style={{ padding: '10px', background: '#005FED' }}>
-                                    <Text textStyle='p_bold' color='base.white'>I would say I know enough of:</Text>
-                                </div>
-                                {designSkillsList.map((skill, index) =>
-                                    skill.size == 'small' &&
-                                    <ListItem key={index}>
-                                        <div className="text-stretcher">
-                                            <Text textStyle='skills' color='bright.yellow'>{skill.text}</Text>
-                                        </div>
-                                    </ListItem>
-                                )}
-                            </List>
-                        </div>
-                    }
-                    {devSkills &&
-                        <div className="skills-bottom-container">
-                            <List variant='skills'>
-                                <div style={{ padding: '10px', background: '#005FED' }}>
-                                    <Text textStyle='p_bold' color='base.white'>I would say I'm excellent with: </Text>
-                                </div>
-                                {devSkillsList.map((skill, index) =>
-                                    skill.size == 'large' &&
-                                    <ListItem key={index}>
-                                        <div className="text-stretcher">
-                                            <Text textStyle='skills' color='bright.orange'>{skill.text}</Text>
-                                        </div>
-                                    </ListItem>
-                                )}
-                            </List>
-                            <List variant='skills'>
-                                <div style={{ padding: '10px', background: '#005FED' }}>
-                                    <Text textStyle='p_bold' color='base.white'>I would say I'm great with:</Text>
-                                </div>
-                                {devSkillsList.map((skill, index) =>
-                                    skill.size == 'mid' &&
-                                    <ListItem key={index}>
-                                        <div className="text-stretcher">
-                                            <Text textStyle='skills' color='bright.green'>{skill.text}</Text>
-                                        </div>
-                                    </ListItem>
-                                )}
-                            </List>
-                            <List variant='skills'>
-                                <div style={{ padding: '10px', background: '#005FED' }}>
-                                    <Text textStyle='p_bold' color='base.white'>I would say I know enough of:</Text>
-                                </div>
-                                {devSkillsList.map((skill, index) =>
-                                    skill.size == 'small' &&
-                                    <ListItem key={index}>
-                                        <div className="text-stretcher">
-                                            <Text textStyle='skills' color='bright.yellow'>{skill.text}</Text>
-                                        </div>
-                                    </ListItem>
-                                )}
-                            </List>
-                        </div>
-                    }
-                </div>
-            </div>
+                    </div>
+                    <div className="skills-bottom">
+                        {allSkills &&
+                            <div className="skills-bottom-container">
+                                <List variant='skills'>
+                                    <div style={{ padding: '10px', background: '#005FED' }}>
+                                        <Text textStyle='p_bold' color='base.white'>I would say I'm excellent with: </Text>
+                                    </div>
+                                    {Skills.map((skill, index) =>
+                                        skill.size == 'large' &&
+                                        <ListItem key={index}>
+                                            <div className="text-stretcher">
+                                                <Text textStyle='skills' color='bright.orange'>{skill.text}</Text>
+                                            </div>
+                                        </ListItem>
+                                    )}
+                                </List>
+                                <List variant='skills'>
+                                    <div style={{ padding: '10px', background: '#005FED' }}>
+                                        <Text textStyle='p_bold' color='base.white'>I would say I'm great with:</Text>
+                                    </div>
+                                    {Skills.map((skill, index) =>
+                                        skill.size == 'mid' &&
+                                        <ListItem key={index}>
+                                            <div className="text-stretcher">
+                                                <Text textStyle='skills' color='bright.green'>{skill.text}</Text>
+                                            </div>
+                                        </ListItem>
+                                    )}
+                                </List>
+                                <List variant='skills'>
+                                    <div style={{ padding: '10px', background: '#005FED' }}>
+                                        <Text textStyle='p_bold' color='base.white'>I would say I know enough of:</Text>
+                                    </div>
+                                    {Skills.map((skill, index) =>
+                                        skill.size == 'small' &&
+                                        <ListItem key={index}>
+                                            <div className="text-stretcher">
+                                                <Text textStyle='skills' color='bright.yellow'>{skill.text}</Text>
+                                            </div>
+                                        </ListItem>
+                                    )}
+                                </List>
+                            </div>
+                        }
+                        {hardSkills &&
+                            <div className="skills-bottom-container">
+                                <List variant='skills'>
+                                    <motion.div style={{ padding: '10px', background: '#005FED' }}>
+                                        <Text textStyle='p_bold' color='base.white'>I would say I'm excellent with: </Text>
+                                    </motion.div>
+                                    {hardSkillsList.map((skill, index) =>
+                                        skill.size == 'large' &&
+                                        <ListItem key={index}>
+                                            <div className="text-stretcher">
+                                                <Text textStyle='skills' color='bright.orange'>{skill.text}</Text>
+                                            </div>
+                                        </ListItem>
+                                    )}
+                                </List>
+                                <List variant='skills'>
+                                    <div style={{ padding: '10px', background: '#005FED' }}>
+                                        <Text textStyle='p_bold' color='base.white'>I would say I'm great with:</Text>
+                                    </div>
+                                    {hardSkillsList.map((skill, index) =>
+                                        skill.size == 'mid' &&
+                                        <ListItem key={index}>
+                                            <div className="text-stretcher">
+                                                <Text textStyle='skills' color='bright.green'>{skill.text}</Text>
+                                            </div>
+                                        </ListItem>
+                                    )}
+                                </List>
+                                <List variant='skills'>
+                                    <div style={{ padding: '10px', background: '#005FED' }}>
+                                        <Text textStyle='p_bold' color='base.white'>I would say I know enough of:</Text>
+                                    </div>
+                                    {hardSkillsList.map((skill, index) =>
+                                        skill.size == 'small' &&
+                                        <ListItem key={index}>
+                                            <div className="text-stretcher">
+                                                <Text textStyle='skills' color='bright.yellow'>{skill.text}</Text>
+                                            </div>
+                                        </ListItem>
+                                    )}
+                                </List>
+                            </div>
+                        }
+                        {softSkills &&
+                            <div className="skills-bottom-container">
+                                <List variant='skills'>
+                                    <div style={{ padding: '10px', background: '#005FED' }}>
+                                        <Text textStyle='p_bold' color='base.white'>I would say I'm excellent with: </Text>
+                                    </div>
+                                    {softSkillsList.map((skill, index) =>
+                                        skill.size == 'large' &&
+                                        <ListItem key={index}>
+                                            <div className="text-stretcher">
+                                                <Text textStyle='skills' color='bright.orange'>{skill.text}</Text>
+                                            </div>
+                                        </ListItem>
+                                    )}
+                                </List>
+                                <List variant='skills'>
+                                    <div style={{ padding: '10px', background: '#005FED' }}>
+                                        <Text textStyle='p_bold' color='base.white'>I would say I'm great with:</Text>
+                                    </div>
+                                    {softSkillsList.map((skill, index) =>
+                                        skill.size == 'mid' &&
+                                        <ListItem key={index}>
+                                            <div className="text-stretcher">
+                                                <Text textStyle='skills' color='bright.green'>{skill.text}</Text>
+                                            </div>
+                                        </ListItem>
+                                    )}
+                                </List>
+                            </div>
+                        }
+                        {designSkills &&
+                            <div className="skills-bottom-container">
+                                <List variant='skills'>
+                                    <div style={{ padding: '10px', background: '#005FED' }}>
+                                        <Text textStyle='p_bold' color='base.white'>I would say I'm excellent with: </Text>
+                                    </div>
+                                    {designSkillsList.map((skill, index) =>
+                                        skill.size == 'large' &&
+                                        <ListItem key={index}>
+                                            <div className="text-stretcher">
+                                                <Text textStyle='skills' color='bright.orange'>{skill.text}</Text>
+                                            </div>
+                                        </ListItem>
+                                    )}
+                                </List>
+                                <List variant='skills'>
+                                    <div style={{ padding: '10px', background: '#005FED' }}>
+                                        <Text textStyle='p_bold' color='base.white'>I would say I'm great with:</Text>
+                                    </div>
+                                    {designSkillsList.map((skill, index) =>
+                                        skill.size == 'mid' &&
+                                        <ListItem key={index}>
+                                            <div className="text-stretcher">
+                                                <Text textStyle='skills' color='bright.green'>{skill.text}</Text>
+                                            </div>
+                                        </ListItem>
+                                    )}
+                                </List>
+                                <List variant='skills'>
+                                    <div style={{ padding: '10px', background: '#005FED' }}>
+                                        <Text textStyle='p_bold' color='base.white'>I would say I know enough of:</Text>
+                                    </div>
+                                    {designSkillsList.map((skill, index) =>
+                                        skill.size == 'small' &&
+                                        <ListItem key={index}>
+                                            <div className="text-stretcher">
+                                                <Text textStyle='skills' color='bright.yellow'>{skill.text}</Text>
+                                            </div>
+                                        </ListItem>
+                                    )}
+                                </List>
+                            </div>
+                        }
+                        {devSkills &&
+                            <div className="skills-bottom-container">
+                                <List variant='skills'>
+                                    <div style={{ padding: '10px', background: '#005FED' }}>
+                                        <Text textStyle='p_bold' color='base.white'>I would say I'm excellent with: </Text>
+                                    </div>
+                                    {devSkillsList.map((skill, index) =>
+                                        skill.size == 'large' &&
+                                        <ListItem key={index}>
+                                            <div className="text-stretcher">
+                                                <Text textStyle='skills' color='bright.orange'>{skill.text}</Text>
+                                            </div>
+                                        </ListItem>
+                                    )}
+                                </List>
+                                <List variant='skills'>
+                                    <div style={{ padding: '10px', background: '#005FED' }}>
+                                        <Text textStyle='p_bold' color='base.white'>I would say I'm great with:</Text>
+                                    </div>
+                                    {devSkillsList.map((skill, index) =>
+                                        skill.size == 'mid' &&
+                                        <ListItem key={index}>
+                                            <div className="text-stretcher">
+                                                <Text textStyle='skills' color='bright.green'>{skill.text}</Text>
+                                            </div>
+                                        </ListItem>
+                                    )}
+                                </List>
+                                <List variant='skills'>
+                                    <div style={{ padding: '10px', background: '#005FED' }}>
+                                        <Text textStyle='p_bold' color='base.white'>I would say I know enough of:</Text>
+                                    </div>
+                                    {devSkillsList.map((skill, index) =>
+                                        skill.size == 'small' &&
+                                        <ListItem key={index}>
+                                            <div className="text-stretcher">
+                                                <Text textStyle='skills' color='bright.yellow'>{skill.text}</Text>
+                                            </div>
+                                        </ListItem>
+                                    )}
+                                </List>
+                            </div>
+                        }
+                    </div>
+                </div>}
+            {projectSelected &&
+                <>{cedarCms &&
+                    <CEDaRCMS 
+                    backToHome={()=> { setProjectSelected(false); setCedarCms(false); }}
+                    nextProject={()=> { setCedarCms(false); setCityPoems(true); }}
+                    />
+                }
+                {cityPoems &&
+                    <CityPoems />
+                }
+                </>
+            }
             <Box bg="blue.dark">
                 <div className="footer">
                     <div className="footer-left">
-                        <img src={footerPortrait}/>
+                        <img src={footerPortrait} />
                     </div>
                     <div className="footer-right">
                         <div>
@@ -532,7 +601,7 @@ const LandingPage = ({ }) => {
                 </div>
             </Box>
         </Box>
-    )
+    </>)
 }
 
 export default LandingPage

@@ -23,6 +23,13 @@ const textStyles = {
         letterSpacing: '-1%',
         fontFamily: "Anybody",
     },
+    h3_card: {
+        fontSize: ['36px', '48px', '48px'],
+        fontWeight: 'normal',
+        lineHeight: '110%',
+        letterSpacing: '-1%',
+        fontFamily: "Anybody",
+    },
     h4_carousel: {
         fontSize: ['36px', '48px', '36px'],
         fontWeight: 'normal',

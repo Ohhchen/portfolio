@@ -7,6 +7,7 @@ import textStyles from './theme/globalStyles/textStyles';
 import colors from './theme/globalStyles/colors';
 import buttonTheme from './theme/components/button'
 import { listTheme } from './theme/components/list'
+import { cardTheme } from './theme/components/card';
 
 function App() {
 
@@ -15,7 +16,8 @@ function App() {
     colors,
     components: {
       Button: buttonTheme,
-      List: listTheme
+      List: listTheme,
+      Card: cardTheme
     },
   })
 
