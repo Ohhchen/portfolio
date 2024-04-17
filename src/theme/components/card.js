@@ -23,7 +23,7 @@ const variants = {
             color: '#005FED'
         },
         body: {
-            width: '100%',
+            width: 'fit-content',
             textAlign: 'justify'
         },
     })

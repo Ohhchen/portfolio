@@ -6,7 +6,7 @@ const colors = {
     bright: {
         yellow: "#FFD74C",
         green: "#79BB62",
-        orange: "#F3AD4A"
+        orange: "#F3AD4A",
     },
     base: {
         black: "#000000",

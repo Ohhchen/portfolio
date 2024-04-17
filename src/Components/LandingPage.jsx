@@ -2,9 +2,14 @@ import { Text, Button, Box, List, ListItem } from "@chakra-ui/react"
 import './styles/LandingPage.css'
 import { useState } from "react"
 import { motion } from "framer-motion"
+import { AiOutlineMail } from "react-icons/ai";
+import { FaGithub } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
 import Skills from './Skills'
 import CEDaRCMS from "./CEDaRCMS"
 import CityPoems from "./CityPoems"
+import HopelandSystems from './HopelandSystems'
+import SXGTwine from './SXGTwine'
 import landingPortrait from '../Assets/Landing portrait/PortraitWbackground.png'
 import aboutPortrait from '../Assets/About Portrait/PortraitWBackground.png'
 import footerPortrait from '../Assets/Footer Portrait/PortraitWBackground.png'
@@ -112,6 +117,16 @@ const LandingPage = ({ }) => {
         }
     }
 
+    const openInNewTab = (url) => {
+        const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+        if (newWindow) newWindow.opener = null
+    }
+
+    const openEmailLink = (email) => {
+        navigator.clipboard.writeText(email); 
+        window.alert(`copied email address: ${email} to the clipboard!`);
+    }
+
     return (<>
         <Box bg='base.white'>
             {!projectSelected &&
@@ -146,7 +161,7 @@ const LandingPage = ({ }) => {
                             <Text textStyle='p' color='blue.dark'>A design enthusiast. A team leader, based in Vancouver, BC Canada</Text>
                         </div>
                         <div>
-                            <Text textStyle='p' color='blue.dark'>I am most experienced as a Project Manager but I worked mostly in small teams where I need to help out with different aspects of the project, so I also have UX/UI designa and web develpment experience.</Text>
+                            <Text textStyle='p' color='blue.dark'>I am most experienced as a Project Manager but I worked mostly in small teams where I need to help out with different aspects of the project, so I also have UX/UI design and web develpment experience.</Text>
                         </div>
                     </div>
                     <div className="whoami-right">
@@ -173,6 +188,8 @@ const LandingPage = ({ }) => {
                                                 setDesign(false);
                                                 setWebDev(false);
                                                 setBranding(false);
+                                                setIllustration(false);
+                                                setDataAnalysis(false);
                                             }}>Project management</Button>
                                         <Button variant={design ? 'primaryClicked' : 'primary'}
                                             onClick={() => {
@@ -180,6 +197,8 @@ const LandingPage = ({ }) => {
                                                 setProjectManagement(false);
                                                 setWebDev(false);
                                                 setBranding(false);
+                                                setIllustration(false);
+                                                setDataAnalysis(false);
                                             }}>UX/UI design</Button>
                                         <Button variant={webDev ? 'primaryClicked' : 'primary'}
                                             onClick={() => {
@@ -187,6 +206,8 @@ const LandingPage = ({ }) => {
                                                 setDesign(false);
                                                 setProjectManagement(false);
                                                 setBranding(false);
+                                                setIllustration(false);
+                                                setDataAnalysis(false);
                                             }}>Web development</Button>
                                         <Button variant={branding ? 'primaryClicked' : 'primary'}
                                             onClick={() => {
@@ -194,6 +215,8 @@ const LandingPage = ({ }) => {
                                                 setWebDev(false);
                                                 setDesign(false);
                                                 setProjectManagement(false);
+                                                setIllustration(false);
+                                                setDataAnalysis(false);
                                             }}>Branding</Button>
                                     </div>
                                 </div>
@@ -203,8 +226,24 @@ const LandingPage = ({ }) => {
                                     <Text textStyle='h4' color='base.white'>Here are some examples of what I would like to do more of</Text>
                                 </div>
                                 <div className="whatdoido-examples-buttons">
-                                    <Button variant='primary'>Illustration</Button>
-                                    <Button variant='primary'>Data analysis</Button>
+                                    <Button variant={illustration ? 'primaryClicked' : 'primary'}
+                                        onClick={() => {
+                                            setBranding(false);
+                                            setWebDev(false);
+                                            setDesign(false);
+                                            setProjectManagement(false);
+                                            setIllustration(true);
+                                            setDataAnalysis(false);
+                                        }}>Illustration</Button>
+                                    <Button variant={dataAnalysis ? 'primaryClicked' : 'primary'}
+                                        onClick={() => {
+                                            setBranding(false);
+                                            setWebDev(false);
+                                            setDesign(false);
+                                            setProjectManagement(false);
+                                            setIllustration(false);
+                                            setDataAnalysis(true);
+                                        }}>Data Analysis</Button>
                                 </div>
                             </div>
                         </div>
@@ -279,12 +318,6 @@ const LandingPage = ({ }) => {
                                 <motion.div whileHover={{ scale: 1.2 }}>
                                     <Button variant='link'
                                         onClick={() => {
-                                            setProjectSelected(true)
-                                        }}>Smímeyale Socials</Button>
-                                </motion.div>
-                                <motion.div whileHover={{ scale: 1.2 }}>
-                                    <Button variant='link'
-                                        onClick={() => {
                                             setProjectSelected(true);
                                             setHopelandSystems(true);
                                         }}>Hopeland Systems</Button>
@@ -296,6 +329,12 @@ const LandingPage = ({ }) => {
                                             setSxgTwineGame(true);
                                         }}>SXG Twine Game</Button>
                                 </motion.div>
+                                <motion.div whileHover={{ scale: 1.2 }}>
+                                    <Button variant='link'
+                                        onClick={() => {
+                                            setProjectSelected(true)
+                                        }}>Smímeyale Socials</Button>
+                                </motion.div>
                             </div>
                         }
                         {branding &&
@@ -305,6 +344,20 @@ const LandingPage = ({ }) => {
                                         onClick={() => {
                                             setProjectSelected(true)
                                         }}>Smímeyale Socials</Button>
+                                </motion.div>
+                            </div>
+                        }
+                        {illustration &&
+                            <div className="whatdoido-right-selection">
+                                <motion.div whileHover={{ scale: 1.2 }}>
+                                    <Text textStyle='h2' color='blue.dark'>Coming soon!</Text>
+                                </motion.div>
+                            </div>
+                        }
+                        {dataAnalysis &&
+                            <div className="whatdoido-right-selection">
+                                <motion.div whileHover={{ scale: 1.2 }}>
+                                    <Text textStyle='h2' color='blue.dark'>Coming soon!</Text>
                                 </motion.div>
                             </div>
                         }
@@ -570,14 +623,29 @@ const LandingPage = ({ }) => {
                 </div>}
             {projectSelected &&
                 <>{cedarCms &&
-                    <CEDaRCMS 
-                    backToHome={()=> { setProjectSelected(false); setCedarCms(false); }}
-                    nextProject={()=> { setCedarCms(false); setCityPoems(true); }}
+                    <CEDaRCMS
+                        backToHome={() => { setProjectSelected(false); setCedarCms(false); }}
+                        nextProject={() => { setCedarCms(false); setCityPoems(true); }}
                     />
                 }
-                {cityPoems &&
-                    <CityPoems />
-                }
+                    {cityPoems &&
+                        <CityPoems
+                            backToHome={() => { setProjectSelected(false); setCityPoems(false); }}
+                            nextProject={() => { setCityPoems(false); setHopelandSystems(true); }}
+                        />
+                    }
+                    {hopelandSystems &&
+                        <HopelandSystems
+                            backToHome={() => { setProjectSelected(false); setHopelandSystems(false); }}
+                            nextProject={() => { setHopelandSystems(false); setSxgTwineGame(true); }}
+                        />
+                    }
+                    {sxgTwineGame &&
+                        <SXGTwine
+                            backToHome={() => { setProjectSelected(false); setSxgTwineGame(false); }}
+                            nextProject={() => { setSxgTwineGame(false); }}
+                        />
+                    }
                 </>
             }
             <Box bg="blue.dark">
@@ -592,10 +660,10 @@ const LandingPage = ({ }) => {
                         <div>
                             <Text textStyle='p' color='base.white'>The work I showcased here are my strongest design disciplines however, this is just a capsule of what I am capable of. Let's get in touch!</Text>
                         </div>
-                        <div>
-                            <Button variant='link' color='base.white'>GitHub</Button>
-                            <Button variant='link' color='base.white'>LinkedIn</Button>
-                            <Button variant='link' color='base.white'>Email</Button>
+                        <div className="links">
+                            <Button variant='link' color='base.white' onClick={() => openEmailLink('ochen0909@gmail.com')}><AiOutlineMail /></Button>
+                            <Button variant='link' color='base.white' onClick={() => openInNewTab('https://www.linkedin.com/in/olivia-chen-26bba9245/')}><FaLinkedin /></Button>
+                            <Button variant='link' color='base.white' onClick={() => openInNewTab('https://github.com/Ohhchen')}><FaGithub /></Button>
                         </div>
                     </div>
                 </div>
