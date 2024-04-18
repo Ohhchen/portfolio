@@ -19,7 +19,7 @@
     background-color: #F8F7FE;
     width: 100%;
     height: 100vh;
-    z-index: 1;
+    z-index: 2;
 }
 
 .navbar-scrolled {
@@ -155,6 +155,7 @@
     width: 50%;
     justify-content: center;
     align-items: center;
+    position: relative;
     text-align: center;
     padding: 50px 119px;
 }
@@ -166,6 +167,36 @@
     width: 100%;
     height: 100%;
     gap: 50px;
+}
+
+.whatdoido-right-selection-cedarcms {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    gap: 50px;
+    background-image: url('../../Assets/Digital\ Project\ Background/GRADIENT_009.jpg');
+}
+
+.whatdoido-right-selection-citypoems{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    gap: 50px;
+    background-image: url('../../Assets/Digital\ Project\ Background/GRADIENT_010.jpg');
+}
+
+.whatdoido-right-selection-sxg{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    gap: 50px;
+    background-image: url('../../Assets/Digital\ Project\ Background/GRADIENT_011.jpg');
 }
 
 .skills {

@@ -43,6 +43,10 @@ const LandingPage = ({ }) => {
     const [cityPoems, setCityPoems] = useState(false)
     const [hopelandSystems, setHopelandSystems] = useState(false)
     const [sxgTwineGame, setSxgTwineGame] = useState(false)
+    const [hoverCEDaRCMS, setHoverCEDaRCMS] = useState(false)
+    const [hoverCityPoems, setHoverCityPoems] = useState(false)
+    const [hoverHopelandSystem, setHoverHopelandSystem] = useState(false)
+    const [hoverSXG, setHoverSXG] = useState(false)
 
     const cardDetails = {
         0: {
@@ -132,7 +136,6 @@ const LandingPage = ({ }) => {
     }
 
     const changeNavBarBG = () => {
-        console.log(window.scrollY)
         if (window.scrollY >= 730 && window.scrollY <= 2840) {
             setPageScrolled(true)
         } else if (window.scrollY <= 730) {
@@ -147,23 +150,37 @@ const LandingPage = ({ }) => {
         window.addEventListener("scroll", changeNavBarBG)
     }, [])
 
+    const changeBackground = () => {
+        if (hoverCityPoems) {
+            return 'whatdoido-right-selection-citypoems'
+        } else if (hoverCEDaRCMS) {
+            return 'whatdoido-right-selection-cedarcms'
+        } else if (hoverSXG) {
+            return 'whatdoido-right-selection-sxg'
+        } else {
+            return "whatdoido-right-selection"
+        }
+    }
+
     return (<>
         <Box bg='base.white'>
-            {navBarExpanded ?
-                <div className="navbar-active">
-                    <motion.div whileHover={{ scale: 1.5 }}>
-                        <IoCloseSharp size={'4em'} color={'#005FED'} onClick={() => setNavBarExpanded(false)} />
-                    </motion.div>
-                    <Button variant='link'>Home</Button>
-                    <Button variant='link'>About</Button>
-                    <Button variant='link'>Work</Button>
-                </div>
-                :
-                <div className="navbar">
-                    <motion.div whileHover={{ scale: 1.5 }}>
-                        <GiHamburgerMenu size={'3em'} className={pageScrolled? 'navbar-scrolled' : 'navbar-unscrolled'} onClick={() => setNavBarExpanded(true)} />
-                    </motion.div>
-                </div>
+            {!projectSelected &&
+                <>{navBarExpanded ?
+                    <div className="navbar-active">
+                        <motion.div whileHover={{ scale: 1.5 }}>
+                            <IoCloseSharp size={'4em'} color={'#005FED'} onClick={() => setNavBarExpanded(false)} />
+                        </motion.div>
+                        <Button variant='link'>Home</Button>
+                        <Button variant='link'>About</Button>
+                        <Button variant='link'>Work</Button>
+                    </div>
+                    :
+                    <div className="navbar">
+                        <motion.div whileHover={{ scale: 1.5 }}>
+                            <GiHamburgerMenu size={'3em'} className={pageScrolled ? 'navbar-scrolled' : 'navbar-unscrolled'} onClick={() => setNavBarExpanded(true)} />
+                        </motion.div>
+                    </div>
+                }</>
             }
             {!projectSelected &&
                 <div className="hero">
@@ -286,23 +303,32 @@ const LandingPage = ({ }) => {
                     </Box>
                     <div className="whatdoido-right">
                         {projectManagement &&
-                            <div className="whatdoido-right-selection">
+                            <div className={changeBackground()}>
                                 <motion.div whileHover={{ scale: 1.2 }}>
-                                    <Button variant='link'
+                                    <Button
+                                        variant='link'
+                                        onMouseEnter={() => setHoverCEDaRCMS(true)}
+                                        onMouseLeave={() => setHoverCEDaRCMS(false)}
                                         onClick={() => {
                                             setProjectSelected(true);
                                             setCedarCms(true);
                                         }}>CEDaR CMS</Button>
                                 </motion.div>
                                 <motion.div whileHover={{ scale: 1.2 }}>
-                                    <Button variant='link'
+                                    <Button
+                                        variant='link'
+                                        onMouseEnter={() => setHoverCityPoems(true)}
+                                        onMouseLeave={() => setHoverCityPoems(false)}
                                         onClick={() => {
                                             setProjectSelected(true);
                                             setCityPoems(true);
                                         }}>City Poems Project</Button>
                                 </motion.div>
                                 <motion.div whileHover={{ scale: 1.2 }}>
-                                    <Button variant='link'
+                                    <Button
+                                        variant='link'
+                                        onMouseEnter={() => setHoverSXG(true)}
+                                        onMouseLeave={() => setHoverSXG(false)}
                                         onClick={() => {
                                             setProjectSelected(true);
                                             setSxgTwineGame(true);
