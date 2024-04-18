@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/portfolio/static/css/main.f5215d98.css",
+    "main.js": "/portfolio/static/js/main.a835c853.js",
+    "static/js/453.1407b060.chunk.js": "/portfolio/static/js/453.1407b060.chunk.js",
+    "static/media/GRADIENT_012.jpg": "/portfolio/static/media/GRADIENT_012.5067cdfd3ee52ba9d575.jpg",
+    "static/media/GRADIENT_011.jpg": "/portfolio/static/media/GRADIENT_011.2fc8d9424f66cc5acd58.jpg",
+    "static/media/GRADIENT_009.jpg": "/portfolio/static/media/GRADIENT_009.662cba2dc3943384030f.jpg",
+    "static/media/GRADIENT_010.jpg": "/portfolio/static/media/GRADIENT_010.2e756250abbb7ba30de3.jpg",
+    "static/media/Image 2.png": "/portfolio/static/media/Image 2.b319529666a43812b63e.png",
+    "static/media/Image 1.png": "/portfolio/static/media/Image 1.f676de6ded7943dd2567.png",
+    "static/media/Image 3.png": "/portfolio/static/media/Image 3.3b19837142274c9d2038.png",
+    "static/media/Image 4.png": "/portfolio/static/media/Image 4.9a5d6652d3093aa27cff.png",
+    "static/media/Image 6.png": "/portfolio/static/media/Image 6.4389c8dcde196f0edc5f.png",
+    "static/media/Image 5.png": "/portfolio/static/media/Image 5.fe0c90cf63ec1b5eb365.png",
+    "static/media/Page 2.png": "/portfolio/static/media/Page 2.f80858c1f45e45b845ab.png",
+    "static/media/Page 1.png": "/portfolio/static/media/Page 1.41705736ce10ce4d723e.png",
+    "static/media/MobileImages.png": "/portfolio/static/media/MobileImages.50721386449ce13f98c9.png",
+    "static/media/Page 5.png": "/portfolio/static/media/Page 5.0b12f6059635c7ffb5c4.png",
+    "static/media/Page 4.png": "/portfolio/static/media/Page 4.0c5b5b62f45079d1ba64.png",
+    "static/media/Page 6.png": "/portfolio/static/media/Page 6.bb4fea5f23e32b6dbc1b.png",
+    "static/media/Page 3.png": "/portfolio/static/media/Page 3.5232765e761001bfd7e6.png",
+    "static/media/PortraitWBackground.png": "/portfolio/static/media/PortraitWBackground.848f0f8a8194e7d8eb21.png",
+    "static/media/PortraitWbackground.png": "/portfolio/static/media/PortraitWbackground.97954b9d5cade04c6465.png",
+    "static/media/logo.svg": "/portfolio/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/portfolio/index.html",
+    "main.f5215d98.css.map": "/portfolio/static/css/main.f5215d98.css.map",
+    "main.a835c853.js.map": "/portfolio/static/js/main.a835c853.js.map",
+    "453.1407b060.chunk.js.map": "/portfolio/static/js/453.1407b060.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f5215d98.css",
+    "static/js/main.a835c853.js"
+  ]
+}
