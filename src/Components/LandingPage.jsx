@@ -1,10 +1,12 @@
-import { Text, Button, Box, List, ListItem } from "@chakra-ui/react"
+import { Text, Button, Box, List, ListItem, Accordion, AccordionButton, AccordionItem, AccordionPanel, background } from "@chakra-ui/react"
 import './styles/LandingPage.css'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { AiOutlineMail } from "react-icons/ai";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { IoCloseSharp } from "react-icons/io5";
 import Skills from './Skills'
 import CEDaRCMS from "./CEDaRCMS"
 import CityPoems from "./CityPoems"
@@ -19,6 +21,8 @@ import g3 from '../Assets/Digital Project Background/GRADIENT_011.jpg'
 import g4 from '../Assets/Digital Project Background/GRADIENT_012.jpg'
 
 const LandingPage = ({ }) => {
+    const [navBarExpanded, setNavBarExpanded] = useState(false)
+    const [pageScrolled, setPageScrolled] = useState(false)
     const [projectManagement, setProjectManagement] = useState(false)
     const [design, setDesign] = useState(false)
     const [webDev, setWebDev] = useState(false)
@@ -123,12 +127,44 @@ const LandingPage = ({ }) => {
     }
 
     const openEmailLink = (email) => {
-        navigator.clipboard.writeText(email); 
+        navigator.clipboard.writeText(email);
         window.alert(`copied email address: ${email} to the clipboard!`);
     }
 
+    const changeNavBarBG = () => {
+        console.log(window.scrollY)
+        if (window.scrollY >= 730 && window.scrollY <= 2840) {
+            setPageScrolled(true)
+        } else if (window.scrollY <= 730) {
+            setPageScrolled(false)
+        } else {
+            setPageScrolled(false)
+        }
+    }
+
+    useEffect(() => {
+        changeNavBarBG();
+        window.addEventListener("scroll", changeNavBarBG)
+    }, [])
+
     return (<>
         <Box bg='base.white'>
+            {navBarExpanded ?
+                <div className="navbar-active">
+                    <motion.div whileHover={{ scale: 1.5 }}>
+                        <IoCloseSharp size={'4em'} color={'#005FED'} onClick={() => setNavBarExpanded(false)} />
+                    </motion.div>
+                    <Button variant='link'>Home</Button>
+                    <Button variant='link'>About</Button>
+                    <Button variant='link'>Work</Button>
+                </div>
+                :
+                <div className="navbar">
+                    <motion.div whileHover={{ scale: 1.5 }}>
+                        <GiHamburgerMenu size={'3em'} className={pageScrolled? 'navbar-scrolled' : 'navbar-unscrolled'} onClick={() => setNavBarExpanded(true)} />
+                    </motion.div>
+                </div>
+            }
             {!projectSelected &&
                 <div className="hero">
                     <div className="hero-top">

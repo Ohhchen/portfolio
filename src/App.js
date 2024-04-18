@@ -17,7 +17,7 @@ function App() {
     components: {
       Button: buttonTheme,
       List: listTheme,
-      Card: cardTheme
+      Card: cardTheme,
     },
   })
 
