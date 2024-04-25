@@ -1,5 +1,9 @@
-import { Text, Button, Box, List, ListItem, Accordion, AccordionButton, AccordionItem, AccordionPanel, background } from "@chakra-ui/react"
-import './styles/LandingPage.css'
+import { Text, Button, Box, List, ListItem, Alert, AlertDescription, AlertTitle } from "@chakra-ui/react"
+import './styles/LandingPage-Xsmall.css'
+import './styles/LandingPage-Small.css'
+import './styles/LandingPage-Medium.css'
+import './styles/LandingPage-Large.css'
+import './styles/LandingPage-Xlarge.css'
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { AiOutlineMail } from "react-icons/ai";
@@ -15,14 +19,11 @@ import SXGTwine from './SXGTwine'
 import landingPortrait from '../Assets/Landing portrait/PortraitWbackground.png'
 import aboutPortrait from '../Assets/About Portrait/PortraitWBackground.png'
 import footerPortrait from '../Assets/Footer Portrait/PortraitWBackground.png'
-import g1 from '../Assets/Digital Project Background/GRADIENT_009.jpg'
-import g2 from '../Assets/Digital Project Background/GRADIENT_010.jpg'
-import g3 from '../Assets/Digital Project Background/GRADIENT_011.jpg'
-import g4 from '../Assets/Digital Project Background/GRADIENT_012.jpg'
 
 const LandingPage = ({ }) => {
     const [navBarExpanded, setNavBarExpanded] = useState(false)
     const [pageScrolled, setPageScrolled] = useState(false)
+    const [domainFiltered, setDomainFiltered] = useState(false)
     const [projectManagement, setProjectManagement] = useState(false)
     const [design, setDesign] = useState(false)
     const [webDev, setWebDev] = useState(false)
@@ -136,12 +137,17 @@ const LandingPage = ({ }) => {
     }
 
     const changeNavBarBG = () => {
-        if (window.scrollY >= 730 && window.scrollY <= 2840) {
-            setPageScrolled(true)
+        // console.log(window.scrollY)
+        if (window.scrollY >= 730 && window.scrollY <= 1300) {
+            setPageScrolled(true);
         } else if (window.scrollY <= 730) {
-            setPageScrolled(false)
+            setPageScrolled(false);
+        } else if (window.scrollY >= 1300 && window.scrollY <= 1850) {
+            setPageScrolled(false);
+        } else if (window.scrollY >= 1850 && window.scrollY <= 2690) {
+            setPageScrolled(true)
         } else {
-            setPageScrolled(false)
+            setPageScrolled(false);
         }
     }
 
@@ -157,6 +163,8 @@ const LandingPage = ({ }) => {
             return 'whatdoido-right-selection-cedarcms'
         } else if (hoverSXG) {
             return 'whatdoido-right-selection-sxg'
+        } else if (hoverHopelandSystem) {
+            return 'whatdoido-right-selection-hs'
         } else {
             return "whatdoido-right-selection"
         }
@@ -170,9 +178,9 @@ const LandingPage = ({ }) => {
                         <motion.div whileHover={{ scale: 1.5 }}>
                             <IoCloseSharp size={'4em'} color={'#005FED'} onClick={() => setNavBarExpanded(false)} />
                         </motion.div>
-                        <Button variant='link'>Home</Button>
-                        <Button variant='link'>About</Button>
-                        <Button variant='link'>Work</Button>
+                        <Button variant='link' onClick={() => { window.scrollTo(0, 0); setNavBarExpanded(false); }}>Home</Button>
+                        <Button variant='link' onClick={() => { window.scrollTo(0, 2840); setNavBarExpanded(false); }}>About</Button>
+                        <Button variant='link' onClick={() => { setCedarCms(true); setProjectSelected(true); window.scrollTo(0, 0); }}>Work</Button>
                     </div>
                     :
                     <div className="navbar">
@@ -186,7 +194,7 @@ const LandingPage = ({ }) => {
                 <div className="hero">
                     <div className="hero-top">
                         <div>
-                            <img src={landingPortrait} style={{ width: '900px' }} />
+                            <img src={landingPortrait} width='auto' />
                         </div>
                         <div className="hero-top">
                             <Text textStyle='h1' color='base.white'>Olivia Chen</Text>
@@ -211,7 +219,7 @@ const LandingPage = ({ }) => {
                             <Text textStyle='h2' color='blue.dark'>Who am I?</Text>
                         </div>
                         <div>
-                            <Text textStyle='p' color='blue.dark'>A design enthusiast. A team leader, based in Vancouver, BC Canada</Text>
+                            <Text textStyle='p' color='blue.dark'>A design enthusiast. A team leader, based in Vancouver, BC Canada.</Text>
                         </div>
                         <div>
                             <Text textStyle='p' color='blue.dark'>I am most experienced as a Project Manager but I worked mostly in small teams where I need to help out with different aspects of the project, so I also have UX/UI design and web develpment experience.</Text>
@@ -223,7 +231,7 @@ const LandingPage = ({ }) => {
                 </div>}
             {!projectSelected &&
                 <div className="whatdoido">
-                    <Box bg='blue.dark'>
+                    <Box bg='blue.dark' style={{ width: '100%' }}>
                         <div className="whatdoido-left">
                             <div>
                                 <Text textStyle='h2' color='base.white'>What do I do?</Text>
@@ -237,6 +245,7 @@ const LandingPage = ({ }) => {
                                     <div className="whatdoido-examples-buttons">
                                         <Button variant={projectManagement ? 'primaryClicked' : 'primary'}
                                             onClick={() => {
+                                                setDomainFiltered(true);
                                                 setProjectManagement(true);
                                                 setDesign(false);
                                                 setWebDev(false);
@@ -246,6 +255,7 @@ const LandingPage = ({ }) => {
                                             }}>Project management</Button>
                                         <Button variant={design ? 'primaryClicked' : 'primary'}
                                             onClick={() => {
+                                                setDomainFiltered(true);
                                                 setDesign(true);
                                                 setProjectManagement(false);
                                                 setWebDev(false);
@@ -255,6 +265,7 @@ const LandingPage = ({ }) => {
                                             }}>UX/UI design</Button>
                                         <Button variant={webDev ? 'primaryClicked' : 'primary'}
                                             onClick={() => {
+                                                setDomainFiltered(true);
                                                 setWebDev(true);
                                                 setDesign(false);
                                                 setProjectManagement(false);
@@ -264,6 +275,7 @@ const LandingPage = ({ }) => {
                                             }}>Web development</Button>
                                         <Button variant={branding ? 'primaryClicked' : 'primary'}
                                             onClick={() => {
+                                                setDomainFiltered(true);
                                                 setBranding(true);
                                                 setWebDev(false);
                                                 setDesign(false);
@@ -281,6 +293,7 @@ const LandingPage = ({ }) => {
                                 <div className="whatdoido-examples-buttons">
                                     <Button variant={illustration ? 'primaryClicked' : 'primary'}
                                         onClick={() => {
+                                            setDomainFiltered(true);
                                             setBranding(false);
                                             setWebDev(false);
                                             setDesign(false);
@@ -290,6 +303,7 @@ const LandingPage = ({ }) => {
                                         }}>Illustration</Button>
                                     <Button variant={dataAnalysis ? 'primaryClicked' : 'primary'}
                                         onClick={() => {
+                                            setDomainFiltered(true);
                                             setBranding(false);
                                             setWebDev(false);
                                             setDesign(false);
@@ -301,129 +315,158 @@ const LandingPage = ({ }) => {
                             </div>
                         </div>
                     </Box>
-                    <div className="whatdoido-right">
-                        {projectManagement &&
-                            <div className={changeBackground()}>
-                                <motion.div whileHover={{ scale: 1.2 }}>
-                                    <Button
-                                        variant='link'
-                                        onMouseEnter={() => setHoverCEDaRCMS(true)}
-                                        onMouseLeave={() => setHoverCEDaRCMS(false)}
-                                        onClick={() => {
-                                            setProjectSelected(true);
-                                            setCedarCms(true);
-                                        }}>CEDaR CMS</Button>
-                                </motion.div>
-                                <motion.div whileHover={{ scale: 1.2 }}>
-                                    <Button
-                                        variant='link'
-                                        onMouseEnter={() => setHoverCityPoems(true)}
-                                        onMouseLeave={() => setHoverCityPoems(false)}
-                                        onClick={() => {
-                                            setProjectSelected(true);
-                                            setCityPoems(true);
-                                        }}>City Poems Project</Button>
-                                </motion.div>
-                                <motion.div whileHover={{ scale: 1.2 }}>
-                                    <Button
-                                        variant='link'
-                                        onMouseEnter={() => setHoverSXG(true)}
-                                        onMouseLeave={() => setHoverSXG(false)}
-                                        onClick={() => {
-                                            setProjectSelected(true);
-                                            setSxgTwineGame(true);
-                                        }}>SXG Twine Game</Button>
-                                </motion.div>
-                            </div>
-                        }
-                        {design &&
-                            <div className="whatdoido-right-selection">
-                                <motion.div whileHover={{ scale: 1.2 }}>
-                                    <Button variant='link'
-                                        onClick={() => {
-                                            setProjectSelected(true);
-                                            setCedarCms(true);
-                                        }}>CEDaR CMS</Button>
-                                </motion.div>
-                                <motion.div whileHover={{ scale: 1.2 }}>
-                                    <Button variant='link'
-                                        onClick={() => {
-                                            setProjectSelected(true);
-                                            setCityPoems(true);
-                                        }}>City Poems Project</Button>
-                                </motion.div>
-                                <motion.div whileHover={{ scale: 1.2 }}>
-                                    <Button variant='link'
-                                        onClick={() => {
-                                            setProjectSelected(true);
-                                            setHopelandSystems(true);
-                                        }}>Hopeland Systems</Button>
-                                </motion.div>
-                                <motion.div whileHover={{ scale: 1.2 }}>
-                                    <Button variant='link'
-                                        onClick={() => {
-                                            setProjectSelected(true);
-                                            setSxgTwineGame(true);
-                                        }}>SXG Twine Game</Button>
-                                </motion.div>
-                            </div>
-                        }
-                        {webDev &&
-                            <div className="whatdoido-right-selection">
-                                <motion.div whileHover={{ scale: 1.2 }}>
-                                    <Button variant='link'
-                                        onClick={() => {
-                                            setProjectSelected(true);
-                                            setCedarCms(true);
-                                        }}>CEDaR CMS</Button>
-                                </motion.div>
-                                <motion.div whileHover={{ scale: 1.2 }}>
-                                    <Button variant='link'
-                                        onClick={() => {
-                                            setProjectSelected(true);
-                                            setHopelandSystems(true);
-                                        }}>Hopeland Systems</Button>
-                                </motion.div>
-                                <motion.div whileHover={{ scale: 1.2 }}>
-                                    <Button variant='link'
-                                        onClick={() => {
-                                            setProjectSelected(true);
-                                            setSxgTwineGame(true);
-                                        }}>SXG Twine Game</Button>
-                                </motion.div>
-                                <motion.div whileHover={{ scale: 1.2 }}>
-                                    <Button variant='link'
-                                        onClick={() => {
-                                            setProjectSelected(true)
-                                        }}>Smímeyale Socials</Button>
-                                </motion.div>
-                            </div>
-                        }
-                        {branding &&
-                            <div className="whatdoido-right-selection">
-                                <motion.div whileHover={{ scale: 1.2 }}>
-                                    <Button variant='link'
-                                        onClick={() => {
-                                            setProjectSelected(true)
-                                        }}>Smímeyale Socials</Button>
-                                </motion.div>
-                            </div>
-                        }
-                        {illustration &&
-                            <div className="whatdoido-right-selection">
-                                <motion.div whileHover={{ scale: 1.2 }}>
-                                    <Text textStyle='h2' color='blue.dark'>Coming soon!</Text>
-                                </motion.div>
-                            </div>
-                        }
-                        {dataAnalysis &&
-                            <div className="whatdoido-right-selection">
-                                <motion.div whileHover={{ scale: 1.2 }}>
-                                    <Text textStyle='h2' color='blue.dark'>Coming soon!</Text>
-                                </motion.div>
-                            </div>
-                        }
-                    </div>
+                    {domainFiltered &&
+                        <div className="whatdoido-right">
+                            {projectManagement &&
+                                <div className={changeBackground()}>
+                                    <motion.div whileHover={{ scale: 1.2 }}>
+                                        <Button
+                                            variant='link'
+                                            onMouseEnter={() => setHoverCEDaRCMS(true)}
+                                            onMouseLeave={() => setHoverCEDaRCMS(false)}
+                                            onClick={() => {
+                                                setProjectSelected(true);
+                                                setCedarCms(true);
+                                                window.scrollTo(0, 0);
+                                            }}>CEDaR CMS</Button>
+                                    </motion.div>
+                                    <motion.div whileHover={{ scale: 1.2 }}>
+                                        <Button
+                                            variant='link'
+                                            onMouseEnter={() => setHoverCityPoems(true)}
+                                            onMouseLeave={() => setHoverCityPoems(false)}
+                                            onClick={() => {
+                                                setProjectSelected(true);
+                                                setCityPoems(true);
+                                                window.scrollTo(0, 0);
+                                            }}>City Poems Project</Button>
+                                    </motion.div>
+                                    <motion.div whileHover={{ scale: 1.2 }}>
+                                        <Button
+                                            variant='link'
+                                            onMouseEnter={() => setHoverSXG(true)}
+                                            onMouseLeave={() => setHoverSXG(false)}
+                                            onClick={() => {
+                                                setProjectSelected(true);
+                                                setSxgTwineGame(true);
+                                                window.scrollTo(0, 0);
+                                            }}>SXG Twine Game</Button>
+                                    </motion.div>
+                                </div>
+                            }
+                            {design &&
+                                <div className={changeBackground()}>
+                                    <motion.div whileHover={{ scale: 1.2 }}>
+                                        <Button
+                                            variant='link'
+                                            onMouseEnter={() => setHoverCEDaRCMS(true)}
+                                            onMouseLeave={() => setHoverCEDaRCMS(false)}
+                                            onClick={() => {
+                                                setProjectSelected(true);
+                                                setCedarCms(true);
+                                                window.scrollTo(0, 0);
+                                            }}>CEDaR CMS</Button>
+                                    </motion.div>
+                                    <motion.div whileHover={{ scale: 1.2 }}>
+                                        <Button
+                                            variant='link'
+                                            onMouseEnter={() => setHoverCityPoems(true)}
+                                            onMouseLeave={() => setHoverCityPoems(false)}
+                                            onClick={() => {
+                                                setProjectSelected(true);
+                                                setCityPoems(true);
+                                                window.scrollTo(0, 0);
+                                            }}>City Poems Project</Button>
+                                    </motion.div>
+                                    <motion.div whileHover={{ scale: 1.2 }}>
+                                        <Button variant='link'
+                                            onMouseEnter={() => setHoverHopelandSystem(true)}
+                                            onMouseLeave={() => setHoverHopelandSystem(false)}
+                                            onClick={() => {
+                                                setProjectSelected(true);
+                                                setHopelandSystems(true);
+                                                window.scrollTo(0, 0);
+                                            }}>Hopeland Systems</Button>
+                                    </motion.div>
+                                    <motion.div whileHover={{ scale: 1.2 }}>
+                                        <Button
+                                            variant='link'
+                                            onMouseEnter={() => setHoverSXG(true)}
+                                            onMouseLeave={() => setHoverSXG(false)}
+                                            onClick={() => {
+                                                setProjectSelected(true);
+                                                setSxgTwineGame(true);
+                                                window.scrollTo(0, 0);
+                                            }}>SXG Twine Game</Button>
+                                    </motion.div>
+                                </div>
+                            }
+                            {webDev &&
+                                <div className={changeBackground()}>
+                                    <motion.div whileHover={{ scale: 1.2 }}>
+                                        <Button
+                                            variant='link'
+                                            onMouseEnter={() => { setHoverCEDaRCMS(true) }}
+                                            onMouseLeave={() => { setHoverCEDaRCMS(false) }}
+                                            onClick={() => {
+                                                setProjectSelected(true);
+                                                setCedarCms(true);
+                                                window.scrollTo(0, 0);
+                                            }}>CEDaR CMS</Button>
+                                    </motion.div>
+                                    <motion.div whileHover={{ scale: 1.2 }}>
+                                        <Button variant='link'
+                                            onMouseEnter={() => { setHoverHopelandSystem(true) }}
+                                            onMouseLeave={() => { setHoverHopelandSystem(false) }}
+                                            onClick={() => {
+                                                setProjectSelected(true);
+                                                setHopelandSystems(true);
+                                                window.scrollTo(0, 0);
+                                            }}>Hopeland Systems</Button>
+                                    </motion.div>
+                                    <motion.div whileHover={{ scale: 1.2 }}>
+                                        <Button variant='link'
+                                            onMouseEnter={() => { setHoverSXG(true) }}
+                                            onMouseLeave={() => { setHoverSXG(false) }}
+                                            onClick={() => {
+                                                setProjectSelected(true);
+                                                setSxgTwineGame(true);
+                                                window.scrollTo(0, 0);
+                                            }}>SXG Twine Game</Button>
+                                    </motion.div>
+                                    <motion.div whileHover={{ scale: 1.2 }}>
+                                        <Button variant='link'
+                                            onClick={() => {
+                                                setProjectSelected(true)
+                                            }}>Smímeyale Socials</Button>
+                                    </motion.div>
+                                </div>
+                            }
+                            {branding &&
+                                <div className="whatdoido-right-selection">
+                                    <motion.div whileHover={{ scale: 1.2 }}>
+                                        <Button variant='link'
+                                            onClick={() => {
+                                                setProjectSelected(true)
+                                            }}>Smímeyale Socials</Button>
+                                    </motion.div>
+                                </div>
+                            }
+                            {illustration &&
+                                <div className="whatdoido-right-selection">
+                                    <motion.div whileHover={{ scale: 1.2 }}>
+                                        <Text textStyle='h2' color='blue.dark'>Coming soon!</Text>
+                                    </motion.div>
+                                </div>
+                            }
+                            {dataAnalysis &&
+                                <div className="whatdoido-right-selection">
+                                    <motion.div whileHover={{ scale: 1.2 }}>
+                                        <Text textStyle='h2' color='blue.dark'>Coming soon!</Text>
+                                    </motion.div>
+                                </div>
+                            }
+                        </div>}
                 </div>}
             {!projectSelected &&
                 <div className="skills">
@@ -686,25 +729,25 @@ const LandingPage = ({ }) => {
             {projectSelected &&
                 <>{cedarCms &&
                     <CEDaRCMS
-                        backToHome={() => { setProjectSelected(false); setCedarCms(false); }}
+                        backToHome={() => { setProjectSelected(false); setCedarCms(false); setNavBarExpanded(false); }}
                         nextProject={() => { setCedarCms(false); setCityPoems(true); }}
                     />
                 }
                     {cityPoems &&
                         <CityPoems
-                            backToHome={() => { setProjectSelected(false); setCityPoems(false); }}
+                            backToHome={() => { setProjectSelected(false); setCityPoems(false); setNavBarExpanded(false); }}
                             nextProject={() => { setCityPoems(false); setHopelandSystems(true); }}
                         />
                     }
                     {hopelandSystems &&
                         <HopelandSystems
-                            backToHome={() => { setProjectSelected(false); setHopelandSystems(false); }}
+                            backToHome={() => { setProjectSelected(false); setHopelandSystems(false); setNavBarExpanded(false); }}
                             nextProject={() => { setHopelandSystems(false); setSxgTwineGame(true); }}
                         />
                     }
                     {sxgTwineGame &&
                         <SXGTwine
-                            backToHome={() => { setProjectSelected(false); setSxgTwineGame(false); }}
+                            backToHome={() => { setProjectSelected(false); setSxgTwineGame(false); setNavBarExpanded(false); }}
                             nextProject={() => { setSxgTwineGame(false); }}
                         />
                     }
@@ -720,7 +763,7 @@ const LandingPage = ({ }) => {
                             <Text textStyle='h2' color='base.white'>Interested in working with me?</Text>
                         </div>
                         <div>
-                            <Text textStyle='p' color='base.white'>The work I showcased here are my strongest design disciplines however, this is just a capsule of what I am capable of. Let's get in touch!</Text>
+                            <Text textStyle='p' color='base.white' style={{ textAlign: 'justify' }}>The work I showcased here are my strongest design disciplines however, this is just a capsule of what I am capable of. Let's get in touch!</Text>
                         </div>
                         <div className="links">
                             <Button variant='link' color='base.white' onClick={() => openEmailLink('ochen0909@gmail.com')}><AiOutlineMail /></Button>

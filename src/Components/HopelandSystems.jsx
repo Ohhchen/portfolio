@@ -124,8 +124,8 @@ const HopelandSystems = ({ backToHome, nextProject }) => {
                 </div>
             </div>
             <div className='nav-buttons'>
-                <Button variant='secondary' onClick={backToHome}>Back to Home</Button>
-                <Button variant='tiertiary' onClick={nextProject}>Next Project</Button>
+                <Button variant='secondary' onClick={() => { backToHome(); window.scrollTo(0,0); }}>Back to Home</Button>
+                <Button variant='tiertiary' onClick={() => { nextProject(); window.scrollTo(0,0); }}å>Next Project</Button>
             </div>
         </div>
     )
