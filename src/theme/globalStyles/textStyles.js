@@ -2,14 +2,14 @@
 const textStyles = {
     h1: {
         // you can also use responsive styles
-        fontSize: ['32px', '48px', '72px', '200px'],
+        fontSize: ['24px', '48px', '96px', '96px', '200px', '200px'],
         fontWeight: 'bold',
         lineHeight: '100%',
         letterSpacing: '-2%',
         fontFamily: "Anybody",
     },
     h2: {
-        fontSize: ['24px', '36px', '48px', '64px'],
+        fontSize: ['24px', '24px', '36px', '48px', '64px', '64px'],
         fontWeight: 'bold',
         lineHeight: '110%',
         letterSpacing: '-1%',
@@ -17,44 +17,44 @@ const textStyles = {
         textWrap: 'pretty'
     },
     h3: {
-        fontSize: ['20px', '36px', '48px', '48px'],
+        fontSize: ['16px', '16px', '20px', '24px', '36px', '48px'],
         fontWeight: 'bold',
         lineHeight: '110%',
         letterSpacing: '-1%',
         fontFamily: "Anybody",
     },
     h3_card: {
-        fontSize: ['20px', '36px', '48px', '48px'],
+        fontSize: ['16px', '16px', '20px', '24px', '36px', '48px'],
         fontWeight: 'normal',
         lineHeight: '110%',
         letterSpacing: '-1%',
         fontFamily: "Anybody",
     },
     h4_carousel: {
-        fontSize: ['16px', '36px', '48px', '36px'],
+        fontSize: ['20px', '20px', '28px', '28px', '36px', '36px'],
         fontWeight: 'normal',
         lineHeight: '110%',
         letterSpacing: '-1%',
         fontFamily: "Anybody",
-        textWrap:'nowrap'
+        textWrap: 'nowrap'
     },
     h4: {
-        fontSize: ['16px', '36px', '48px', '36px'],
+        fontSize: ['20px', '20px', '28px', '28px', '36px', '36px'],
         fontWeight: 'normal',
         lineHeight: '110%',
         letterSpacing: '-1%',
         fontFamily: "Anybody",
-        textWrap:'pretty'
+        textWrap: 'pretty'
     },
     skills: {
-        fontSize: ['16px', '36px', '48px', '24px'],
+        fontSize: ['12px', '16px', '20px' , '20px', '24px', '24px'],
         fontWeight: 'normal',
         lineHeight: '110%',
         letterSpacing: '-1%',
         fontFamily: "Anybody",
     },
     p: {
-        fontSize: ['12px', '36px', '48px', '24px'],
+        fontSize: ['12px', '16px', '20px' , '20px', '24px', '24px'],
         fontWeight: 'light',
         lineHeight: '110%',
         letterSpacing: '-1%',
@@ -62,14 +62,14 @@ const textStyles = {
         textWrap: 'pretty'
     },
     p_bold: {
-        fontSize: ['12px', '36px', '48px', '16px'],
+        fontSize: ['10px', '10px', '12px', '12px', '16px', '16px'],
         fontWeight: 'semibold',
         lineHeight: '110%',
         letterSpacing: '-1%',
         fontFamily: "Anybody",
     },
     p_s: {
-        fontSize: ['9px', '36px', '48px', '16px'],
+        fontSize: ['10px', '10px', '12px', '12px', '16px', '16px'],
         fontWeight: 'light',
         lineHeight: '110%',
         letterSpacing: '-1%',

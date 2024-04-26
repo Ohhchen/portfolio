@@ -1,9 +1,10 @@
 import { Text, Button, Box, List, ListItem, Alert, AlertDescription, AlertTitle } from "@chakra-ui/react"
-import './styles/LandingPage-Xsmall.css'
-import './styles/LandingPage-Small.css'
-import './styles/LandingPage-Medium.css'
-import './styles/LandingPage-Large.css'
-import './styles/LandingPage-Xlarge.css'
+// import './styles/LandingPage-Xsmall.css'
+// import './styles/LandingPage-Small.css'
+// import './styles/LandingPage-Medium.css'
+// import './styles/LandingPage-Large.css'
+// import './styles/LandingPage-Xlarge.css'
+import './styles/LandingPage.css'
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { AiOutlineMail } from "react-icons/ai";
@@ -171,7 +172,7 @@ const LandingPage = ({ }) => {
     }
 
     return (<>
-        <Box bg='base.white'>
+        <Box bg='base.white' width={['100%', '100%', '100%', '100%', '100%', '100%']}>
             {!projectSelected &&
                 <>{navBarExpanded ?
                     <div className="navbar-active">
@@ -193,9 +194,9 @@ const LandingPage = ({ }) => {
             {!projectSelected &&
                 <div className="hero">
                     <div className="hero-top">
-                        <div>
-                            <img src={landingPortrait} width='auto' />
-                        </div>
+                        <Box width={['200px', '200px', '200px', '800px', '900px', '900px']}>
+                            <img src={landingPortrait} width='100%' />
+                        </Box>
                         <div className="hero-top">
                             <Text textStyle='h1' color='base.white'>Olivia Chen</Text>
                         </div>
