@@ -194,7 +194,7 @@ const LandingPage = ({ }) => {
             {!projectSelected &&
                 <div className="hero">
                     <div className="hero-top">
-                        <Box width={['200px', '200px', '500px', '800px', '900px', '900px']}>
+                        <Box width={['200px', '200px', '500px', '500px', '900px', '900px']}>
                             <img src={landingPortrait} width='100%' />
                         </Box>
                         <div className="hero-top">
@@ -751,7 +751,7 @@ const LandingPage = ({ }) => {
                     {sxgTwineGame &&
                         <SXGTwine
                             backToHome={() => { setProjectSelected(false); setSxgTwineGame(false); setNavBarExpanded(false); }}
-                            nextProject={() => { setSxgTwineGame(false); }}
+                            nextProject={() => { setSxgTwineGame(false); setProjectSelected(false); setNavBarExpanded(false); window.scrollTo(0,0); }}
                         />
                     }
                 </>
@@ -759,7 +759,9 @@ const LandingPage = ({ }) => {
             <Box bg="blue.dark">
                 <div className="footer">
                     <div className="footer-left">
-                        <img src={footerPortrait} />
+                        <Box width={['200px', '200px', '500px', 'auto', 'auto', 'auto']}>
+                            <img src={footerPortrait} />
+                        </Box>
                     </div>
                     <div className="footer-right">
                         <div>

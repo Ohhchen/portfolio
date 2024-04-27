@@ -1,5 +1,14 @@
-import { Card, CardHeader, CardBody, CardFooter, Text, Button } from '@chakra-ui/react'
-import './styles/ProjectPages.css'
+import { Card, CardHeader, CardBody, Text, Button } from '@chakra-ui/react'
+// import './styles/ProjectPages.css'
+import { useEffect, useState } from "react"
+import { motion } from "framer-motion"
+import { GiHamburgerMenu } from "react-icons/gi";
+import { IoCloseSharp } from "react-icons/io5";
+import './styles/ProjectPages-Xsmall.css'
+import './styles/ProjectPages-Small.css'
+import './styles/ProjectPages-Medium.css'
+import './styles/ProjectPages-Large.css'
+import './styles/ProjectPages-Xlarge.css'
 import image1 from '../Assets/Projects/SXG Twine Game/Modified Assets/Image 1.png'
 import image2 from '../Assets/Projects/SXG Twine Game/Modified Assets/Image 2.png'
 import image3 from '../Assets/Projects/SXG Twine Game/Modified Assets/Image 3.png'
@@ -8,9 +17,24 @@ import image5 from '../Assets/Projects/SXG Twine Game/Modified Assets/Image 5.pn
 import image6 from '../Assets/Projects/SXG Twine Game/Modified Assets/Image 6.png'
 
 const SXGTwine = ({ backToHome, nextProject }) => {
-
+    const [navBarExpanded, setNavBarExpanded] = useState(false)
 
     return (
+        <>{navBarExpanded ?
+            <div className="navbar-active">
+                <motion.div whileHover={{ scale: 1.5 }}>
+                    <IoCloseSharp size={'4em'} color={'#005FED'} onClick={() => setNavBarExpanded(false)} />
+                </motion.div>
+                <Button variant='link' onClick={() => { window.scrollTo(0, 0); setNavBarExpanded(false); }}>Home</Button>
+                <Button variant='link' onClick={() => { window.scrollTo(0, 2840); setNavBarExpanded(false); }}>About</Button>
+            </div>
+            :
+            <div className="navbar">
+                <motion.div whileHover={{ scale: 1.5 }}>
+                    <GiHamburgerMenu size={'3em'} color={'#005FED'} onClick={() => setNavBarExpanded(true)} />
+                </motion.div>
+            </div>
+        }
         <div className='container'>
             <div className='about-projects'>
                 <div className='projectTitle'>
@@ -115,7 +139,7 @@ const SXGTwine = ({ backToHome, nextProject }) => {
                 <Button variant='secondary' onClick={() => { backToHome(); window.scrollTo(0,0); }}>Back to Home</Button>
                 <Button variant='tiertiary' onClick={() => { nextProject(); window.scrollTo(0,0); }}>Next Project</Button>
             </div>
-        </div>
+        </div></>
     )
 }
 

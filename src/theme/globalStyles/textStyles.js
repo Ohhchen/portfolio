@@ -31,7 +31,7 @@ const textStyles = {
         fontFamily: "Anybody",
     },
     h4_carousel: {
-        fontSize: ['20px', '20px', '28px', '28px', '36px', '36px'],
+        fontSize: ['16px', '16px', '20px', '20px', '36px', '36px'],
         fontWeight: 'normal',
         lineHeight: '110%',
         letterSpacing: '-1%',
