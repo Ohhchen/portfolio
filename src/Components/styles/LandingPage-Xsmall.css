@@ -149,7 +149,7 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        gap: 30px;
+        gap: 10px;
     }
 
     .whatdoido-right {
@@ -231,7 +231,7 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        gap: 30px;
+        gap: 10px;
     }
 
     .skills-bottom {
@@ -242,7 +242,7 @@
 
     .skills-bottom-container {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         gap: 10px;
     }
 

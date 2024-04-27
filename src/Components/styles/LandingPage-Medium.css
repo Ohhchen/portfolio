@@ -123,11 +123,13 @@
         display: flex;
         flex-direction: column;
         width: auto;
+        align-items: center;
+        justify-content: flex-start;
     }
     
     .whatdoido {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         width: 100%;
     }
     
@@ -135,8 +137,8 @@
         display: flex;
         flex-direction: column;
         width: auto;
-        padding: 50px 119px 50px 119px;
-        gap: 30px;
+        padding: 50px 30px 50px 119px;
+        gap: 15px;
     }
     
     .whatdoido-examples {
@@ -149,7 +151,7 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        gap: 30px;
+        gap: 15px;
     }
     
     .whatdoido-right {
@@ -224,14 +226,14 @@
     .skills-top {
         display: flex;
         flex-direction: row;
-        gap: 50px;
+        gap: 15px;
     }
     
     .skills-top-buttons {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        gap: 30px;
+        gap: 15px;
     }
     
     .skills-bottom {
