@@ -25,8 +25,12 @@ const SXGTwine = ({ backToHome, nextProject }) => {
                 <motion.div whileHover={{ scale: 1.5 }}>
                     <IoCloseSharp size={'4em'} color={'#005FED'} onClick={() => setNavBarExpanded(false)} />
                 </motion.div>
-                <Button variant='link' onClick={() => { window.scrollTo(0, 0); setNavBarExpanded(false); }}>Home</Button>
-                <Button variant='link' onClick={() => { window.scrollTo(0, 2840); setNavBarExpanded(false); }}>About</Button>
+                <Button variant='link' onClick={() => { window.scrollTo(0, 0); setNavBarExpanded(false); backToHome(); }}>Home</Button>
+                <Button variant='link'>
+                    <a href='#whoami' onClick={() => { setNavBarExpanded(false); backToHome(); }}>
+                        About
+                    </a>
+                </Button>
             </div>
             :
             <div className="navbar">
@@ -51,17 +55,10 @@ const SXGTwine = ({ backToHome, nextProject }) => {
                     </Card>
                     <Card variant='projects'>
                         <CardHeader>
-                            <Text textStyle='h3_card' color='blue.dark'>Target Audience</Text>
+                            <Text textStyle='h3_card' color='blue.dark'>Solution</Text>
                         </CardHeader>
                         <CardBody>
-                            <div className='targetAudience'>
-                                <div className='targetAudience-tags'>
-                                    <Text textStyle='p_bold' color='base.white'>Youth programs staffs</Text>
-                                </div>
-                                <div className='targetAudience-tags'>
-                                    <Text textStyle='p_bold' color='base.white'>Youths of SXG</Text>
-                                </div>
-                            </div>
+                            <Text textStyle='p' color='blue.dark'>We created a low effort “environment”/template using Twine 2.0 for the youths within the community to fill in their own story into the template given them. The deliverable included pictures of each nation within the community, and workshops were ran to teach the youths how to fill in their story and content within the template we’ve given them. </Text>
                         </CardBody>
                     </Card>
                 </div>
@@ -98,10 +95,17 @@ const SXGTwine = ({ backToHome, nextProject }) => {
                     </Card>
                     <Card variant='projects'>
                         <CardHeader>
-                            <Text textStyle='h3_card' color='blue.dark'>Solution</Text>
+                            <Text textStyle='h3_card' color='blue.dark'>Target Audience</Text>
                         </CardHeader>
                         <CardBody>
-                            <Text textStyle='p' color='blue.dark'>After researching and reviewing the CMS options available, we decided to build our own because each community’s protocol is different, therefore the context required with data will be different. In order to customize context to each community, we have to make the CMS scalable.</Text>
+                            <div className='targetAudience'>
+                                <div className='targetAudience-tags'>
+                                    <Text textStyle='p_bold' color='base.white'>Youth programs staffs</Text>
+                                </div>
+                                <div className='targetAudience-tags'>
+                                    <Text textStyle='p_bold' color='base.white'>Youths of SXG</Text>
+                                </div>
+                            </div>
                         </CardBody>
                     </Card>
                     <Card variant='projects'>

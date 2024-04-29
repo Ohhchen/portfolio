@@ -179,8 +179,16 @@ const LandingPage = ({ }) => {
                         <motion.div whileHover={{ scale: 1.5 }}>
                             <IoCloseSharp size={'4em'} color={'#005FED'} onClick={() => setNavBarExpanded(false)} />
                         </motion.div>
-                        <Button variant='link' onClick={() => { window.scrollTo(0, 0); setNavBarExpanded(false); }}>Home</Button>
-                        <Button variant='link' onClick={() => { window.scrollTo(0, 2840); setNavBarExpanded(false); }}>About</Button>
+                        <Button variant='link'>
+                            <a onClick={() => { window.scrollTo(0, 0); setNavBarExpanded(false); }}>
+                                Home
+                            </a>
+                        </Button>
+                        <Button variant='link'>
+                            <a href="#whoami" onClick={() => { setNavBarExpanded(false); }}>
+                                About
+                            </a>
+                        </Button>
                         <Button variant='link' onClick={() => { setCedarCms(true); setProjectSelected(true); window.scrollTo(0, 0); }}>Work</Button>
                     </div>
                     :
@@ -214,7 +222,7 @@ const LandingPage = ({ }) => {
                     </div>
                 </div>}
             {!projectSelected &&
-                <div className="whoami">
+                <div className="whoami" id='whoami'>
                     <div className="whoami-left">
                         <div>
                             <Text textStyle='h2' color='blue.dark'>Who am I?</Text>
@@ -751,7 +759,7 @@ const LandingPage = ({ }) => {
                     {sxgTwineGame &&
                         <SXGTwine
                             backToHome={() => { setProjectSelected(false); setSxgTwineGame(false); setNavBarExpanded(false); }}
-                            nextProject={() => { setSxgTwineGame(false); setProjectSelected(false); setNavBarExpanded(false); window.scrollTo(0,0); }}
+                            nextProject={() => { setSxgTwineGame(false); setProjectSelected(false); setNavBarExpanded(false); window.scrollTo(0, 0); }}
                         />
                     }
                 </>

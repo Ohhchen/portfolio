@@ -29,8 +29,12 @@ const HopelandSystems = ({ backToHome, nextProject }) => {
                 <motion.div whileHover={{ scale: 1.5 }}>
                     <IoCloseSharp size={'4em'} color={'#005FED'} onClick={() => setNavBarExpanded(false)} />
                 </motion.div>
-                <Button variant='link' onClick={() => { window.scrollTo(0, 0); setNavBarExpanded(false); }}>Home</Button>
-                <Button variant='link' onClick={() => { window.scrollTo(0, 2840); setNavBarExpanded(false); }}>About</Button>
+                <Button variant='link' onClick={() => { window.scrollTo(0, 0); setNavBarExpanded(false); backToHome(); }}>Home</Button>
+                <Button variant='link'>
+                    <a href='#whoami' onClick={() => { setNavBarExpanded(false); backToHome(); }}>
+                        About
+                    </a>
+                </Button>
             </div>
             :
             <div className="navbar">
@@ -39,119 +43,124 @@ const HopelandSystems = ({ backToHome, nextProject }) => {
                 </motion.div>
             </div>
         }
-        <div className='container'>
-            <div className='about-projects'>
-                <div className='projectTitle'>
-                    <Text textStyle='h1' color='base.black'>Hopeland System</Text>
+            <div className='container'>
+                <div className='about-projects'>
+                    <div className='projectTitle'>
+                        <Text textStyle='h1' color='base.black'>Hopeland System</Text>
+                    </div>
+                    <div className='cards'>
+                        <Card variant='projects'>
+                            <CardHeader>
+                                <Text textStyle='h3_card' color='blue.dark'>Mission</Text>
+                            </CardHeader>
+                            <CardBody>
+                                <li style={{ 'list-style-type': 'none' }}>
+                                    <Text textStyle='p' color='blue.dark'>1. Design and build a website for the client, Hopeland Systems.</Text>
+                                </li>
+                                <li style={{ 'list-style-type': 'none' }}>
+                                    <Text textStyle='p' color='blue.dark'>2. Design the product, which is a desktop application of for the client, Hopeland Systems in collaboration with the student team responsible for building the product.</Text>
+                                </li>
+                            </CardBody>
+                        </Card>
+                        <Card variant='projects'>
+                            <CardHeader>
+                                <Text textStyle='h3_card' color='blue.dark'>Solution</Text>
+                            </CardHeader>
+                            <CardBody>
+                                <li style={{ 'list-style-type': 'none' }}>
+                                    <Text textStyle='p' color='blue.dark'>1. Create a mid-fidelity website that is built using Wordpress so the client can maintain, edit and add new content if needed in the future.</Text>
+                                </li>
+                                <li style={{ 'list-style-type': 'none' }}>
+                                    <Text textStyle='p' color='blue.dark'>2.  Create a mid-fidelity interface for the product, where clients of Hopeland Systems can monitor their fire detectors with ease accessible on mobile and desktop devices.</Text>
+                                </li>
+                            </CardBody>
+                        </Card>
+                    </div>
+                    <div className='cards'>
+                        <Card variant='projects'>
+                            <CardHeader>
+                                <Text textStyle='h3_card' color='blue.dark'>Tech Stack</Text>
+                            </CardHeader>
+                            <CardBody>
+                                <div className='teckStack'>
+                                    <div className='teckStack-tags'>
+                                        <Text textStyle='p_bold' color='bright.yellow'>Figma</Text>
+                                    </div>
+                                    <div className='teckStack-tags'>
+                                        <Text textStyle='p_bold' color='bright.green'>Photoshop</Text>
+                                    </div>
+                                    <div className='teckStack-tags'>
+                                        <Text textStyle='p_bold' color='base.beige'>Illustrator</Text>
+                                    </div>
+                                    <div className='teckStack-tags'>
+                                        <Text textStyle='p_bold' color='bright.orange'>Animate (Adobe)</Text>
+                                    </div>
+                                    <div className='teckStack-tags'>
+                                        <Text textStyle='p_bold' color='bright.green'>Webflow</Text>
+                                    </div>
+                                    <div className='teckStack-tags'>
+                                        <Text textStyle='p_bold' color='bright.orange'>Wordpress</Text>
+                                    </div>
+                                </div>
+                            </CardBody>
+                        </Card>
+                        <Card variant='projects'>
+                            <CardHeader>
+                                <Text textStyle='h3_card' color='blue.dark'>Target Audience</Text>
+                            </CardHeader>
+                            <CardBody>
+                                <div className='targetAudience'>
+                                    <div className='targetAudience-tags'>
+                                        <Text textStyle='p_bold' color='base.white'>Clients of Hopeland Systems</Text>
+                                    </div>
+                                    <div className='targetAudience-tags'>
+                                        <Text textStyle='p_bold' color='base.white'>The general public who is curious about Hopeland Systems</Text>
+                                    </div>
+                                </div>
+                            </CardBody>
+                        </Card>
+                        <Card variant='projects'>
+                            <CardHeader>
+                                <Text textStyle='h3_card' color='blue.dark'>Roles</Text>
+                            </CardHeader>
+                            <CardBody>
+                                <div className='roles'>
+                                    <div className='roles-tags'>
+                                        <Text textStyle='p_bold' color='blue.dark'>Web Developer</Text>
+                                    </div>
+                                    <div className='roles-tags'>
+                                        <Text textStyle='p_bold' color='blue.dark'>UX/UI Designer</Text>
+                                    </div>
+                                </div>
+                            </CardBody>
+                        </Card>
+                    </div>
                 </div>
-                <div className='cards'>
-                    <Card variant='projects'>
-                        <CardHeader>
-                            <Text textStyle='h3_card' color='blue.dark'>Mission</Text>
-                        </CardHeader>
-                        <CardBody>
-                            <li style={{ 'list-style-type': 'none' }}>
-                                <Text textStyle='p' color='blue.dark'>1. Design and build a website for the client, Hopeland Systems</Text>
-                            </li>
-                            <li style={{ 'list-style-type': 'none' }}>
-                                <Text textStyle='p' color='blue.dark'>2. Design the product, which is a desktop application of for the client, Hopeland Systems in collaboration with the student team responsible for building the product</Text>
-                            </li>
-                        </CardBody>
-                    </Card>
-                    <Card variant='projects'>
-                        <CardHeader>
-                            <Text textStyle='h3_card' color='blue.dark'>Target Audience</Text>
-                        </CardHeader>
-                        <CardBody>
-                            <div className='targetAudience'>
-                                <div className='targetAudience-tags'>
-                                    <Text textStyle='p_bold' color='base.white'>Clients of Hopeland Systems</Text>
-                                </div>
-                                <div className='targetAudience-tags'>
-                                    <Text textStyle='p_bold' color='base.white'>The general public who is curious about Hopeland Systems</Text>
-                                </div>
-                            </div>
-                        </CardBody>
-                    </Card>
+                <div className='pictures-container'>
+                    <Text textStyle='h2' color='base.black'>The Finished Product - Website</Text>
+                    <div className='pictures'>
+                        <img src={image1} height='792' alt="" />
+                        <img src={image2} height='792' alt="" />
+                        <img src={image3} height='792' alt="" />
+                        <img src={image4} height='792' alt="" />
+                        <img src={image5} height='792' alt="" />
+                    </div>
                 </div>
-                <div className='cards'>
-                    <Card variant='projects'>
-                        <CardHeader>
-                            <Text textStyle='h3_card' color='blue.dark'>Tech Stack</Text>
-                        </CardHeader>
-                        <CardBody>
-                            <div className='teckStack'>
-                                <div className='teckStack-tags'>
-                                    <Text textStyle='p_bold' color='bright.yellow'>Figma</Text>
-                                </div>
-                                <div className='teckStack-tags'>
-                                    <Text textStyle='p_bold' color='bright.green'>Photoshop</Text>
-                                </div>
-                                <div className='teckStack-tags'>
-                                    <Text textStyle='p_bold' color='base.beige'>Illustrator</Text>
-                                </div>
-                                <div className='teckStack-tags'>
-                                    <Text textStyle='p_bold' color='bright.orange'>Animate (Adobe)</Text>
-                                </div>
-                                <div className='teckStack-tags'>
-                                    <Text textStyle='p_bold' color='bright.green'>Webflow</Text>
-                                </div>
-                                <div className='teckStack-tags'>
-                                    <Text textStyle='p_bold' color='bright.orange'>Wordpress</Text>
-                                </div>
-                            </div>
-                        </CardBody>
-                    </Card>
-                    <Card variant='projects'>
-                        <CardHeader>
-                            <Text textStyle='h3_card' color='blue.dark'>Solution</Text>
-                        </CardHeader>
-                        <CardBody>
-                            <Text textStyle='p' color='blue.dark'>View a summary of all your customers over the last month.</Text>
-                        </CardBody>
-                    </Card>
-                    <Card variant='projects'>
-                        <CardHeader>
-                            <Text textStyle='h3_card' color='blue.dark'>Roles</Text>
-                        </CardHeader>
-                        <CardBody>
-                            <div className='roles'>
-                                <div className='roles-tags'>
-                                    <Text textStyle='p_bold' color='blue.dark'>Web Developer</Text>
-                                </div>
-                                <div className='roles-tags'>
-                                    <Text textStyle='p_bold' color='blue.dark'>UX/UI Designer</Text>
-                                </div>
-                            </div>
-                        </CardBody>
-                    </Card>
+                <div className='pictures-container'>
+                    <Text textStyle='h2' color='base.black'>The Finished Product - Product</Text>
+                    <div className='pictures'>
+                        <img src={image6} height='792' alt="" />
+                        <img src={image7} height='792' alt="" />
+                        <img src={image8} height='792' alt="" />
+                        <img src={image9} height='792' alt="" />
+                        <img src={image10} height='792' alt="" />
+                    </div>
                 </div>
-            </div>
-            <div className='pictures-container'>
-                <Text textStyle='h2' color='base.black'>The Finished Product - Website</Text>
-                <div className='pictures'>
-                    <img src={image1} height='792' alt="" />
-                    <img src={image2} height='792' alt="" />
-                    <img src={image3} height='792' alt="" />
-                    <img src={image4} height='792' alt="" />
-                    <img src={image5} height='792' alt="" />
+                <div className='nav-buttons'>
+                    <Button variant='secondary' onClick={() => { backToHome(); window.scrollTo(0, 0); }}>Back to Home</Button>
+                    <Button variant='tiertiary' onClick={() => { nextProject(); window.scrollTo(0, 0); }} å>Next Project</Button>
                 </div>
-            </div>
-            <div className='pictures-container'>
-                <Text textStyle='h2' color='base.black'>The Finished Product - Product</Text>
-                <div className='pictures'>
-                    <img src={image6} height='792' alt="" />
-                    <img src={image7} height='792' alt="" />
-                    <img src={image8} height='792' alt="" />
-                    <img src={image9} height='792' alt="" />
-                    <img src={image10} height='792' alt="" />
-                </div>
-            </div>
-            <div className='nav-buttons'>
-                <Button variant='secondary' onClick={() => { backToHome(); window.scrollTo(0,0); }}>Back to Home</Button>
-                <Button variant='tiertiary' onClick={() => { nextProject(); window.scrollTo(0,0); }}å>Next Project</Button>
-            </div>
-        </div></>
+            </div></>
     )
 }
 

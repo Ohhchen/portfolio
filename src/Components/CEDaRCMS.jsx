@@ -25,8 +25,12 @@ const CEDaRCMS = ({ backToHome, nextProject }) => {
                 <motion.div whileHover={{ scale: 1.5 }}>
                     <IoCloseSharp size={'4em'} color={'#005FED'} onClick={() => setNavBarExpanded(false)} />
                 </motion.div>
-                <Button variant='link' onClick={() => { window.scrollTo(0, 0); setNavBarExpanded(false); }}>Home</Button>
-                <Button variant='link' onClick={() => { window.scrollTo(0, 2840); setNavBarExpanded(false); }}>About</Button>
+                <Button variant='link' onClick={() => { window.scrollTo(0, 0); setNavBarExpanded(false); backToHome(); }}>Home</Button>
+                <Button variant='link'>
+                    <a href='#whoami' onClick={() => { setNavBarExpanded(false); backToHome(); }}>
+                        About
+                    </a>
+                </Button>
             </div>
             :
             <div className="navbar">
@@ -54,7 +58,7 @@ const CEDaRCMS = ({ backToHome, nextProject }) => {
                                 <Text textStyle='h3_card' color='blue.dark'>Solution</Text>
                             </CardHeader>
                             <CardBody>
-                                <Text textStyle='p' color='blue.dark'>After researching and reviewing the CMS options available, we decided to build our own because each community’s protocol is different, therefore the context required with data will be different. In order to customize context to each community, we have to make the CMS scalable.</Text>
+                                <Text textStyle='p' color='blue.dark'>After researching and reviewing the CMS options available, we decided to build our own because each community’s protocol is different, therefore the context required with data will be different. In order to customize context to each community, we have made the CMS scalable to each project and community's needs.</Text>
                             </CardBody>
                         </Card>
                     </div>

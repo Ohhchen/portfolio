@@ -1,5 +1,9 @@
   /* Small devices (portrait tablets and large phones, 600px and up) */
   @media only screen and (min-width: 600px) {
+    html{
+        scroll-behavior: smooth;
+    }
+    
     .navbar {
         display: flex;
         flex-direction: row;
@@ -264,8 +268,8 @@
     .footer {
         display: flex;
         flex-direction: row;
-        padding: 50px 119px 0px 0px;
-        gap: 100px;
+        padding: 50px 30px 0px 0px;
+        gap: 30px;
     }
     
     .footer-left {

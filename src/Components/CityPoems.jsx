@@ -24,8 +24,12 @@ const CityPoems = ({ backToHome, nextProject }) => {
                 <motion.div whileHover={{ scale: 1.5 }}>
                     <IoCloseSharp size={'4em'} color={'#005FED'} onClick={() => setNavBarExpanded(false)} />
                 </motion.div>
-                <Button variant='link' onClick={() => { window.scrollTo(0, 0); setNavBarExpanded(false); }}>Home</Button>
-                <Button variant='link' onClick={() => { window.scrollTo(0, 2840); setNavBarExpanded(false); }}>About</Button>
+                <Button variant='link' onClick={() => { window.scrollTo(0, 0); setNavBarExpanded(false); backToHome(); }}>Home</Button>
+                <Button variant='link'>
+                    <a href='#whoami' onClick={() => { setNavBarExpanded(false); backToHome(); }}>
+                        About
+                    </a>
+                </Button>
             </div>
             :
             <div className="navbar">
@@ -45,7 +49,7 @@ const CityPoems = ({ backToHome, nextProject }) => {
                             <Text textStyle='h3_card' color='blue.dark'>Mission</Text>
                         </CardHeader>
                         <CardBody>
-                            <Text textStyle='p' color='blue.dark'>As a research space, the projects CEDaR space takes on are with First Nations and Indigenous community, so we want to practice ethical standards of data lifecycle practices with the data that our community collaborators entrust us to work with by building a Content Management System (CMS) to maintain a healthy researcher to community collaborator work load balance.</Text>
+                            <Text textStyle='p' color='blue.dark'>The City Poems project is an extension from Vancouver’s 2022 Poet Laureate, Fiona Tinwei Lam’s legacy project where she challenges local poets to write site-specific poems about Vancouver. We were tasked to make the poetry more interactive and immersive through storytelling. Therefore, we propose the idea of physically connecting the poems and the places that they are written about. </Text>
                         </CardBody>
                     </Card>
                     <Card variant='projects'>
@@ -53,7 +57,7 @@ const CityPoems = ({ backToHome, nextProject }) => {
                             <Text textStyle='h3_card' color='blue.dark'>Solution</Text>
                         </CardHeader>
                         <CardBody>
-                            <Text textStyle='p' color='blue.dark'>After researching and reviewing the CMS options available, we decided to build our own because each community’s protocol is different, therefore the context required with data will be different. In order to customize context to each community, we have to make the CMS scalable.</Text>
+                            <Text textStyle='p' color='blue.dark'>In CEDaR’s version of the City Poems project, the poems from the contest are made available via a mobile app where users may access the audio, video, poem body and information about the author using GPS tracking for users to “unlock” the poem at the site it’s written about. </Text>
                         </CardBody>
                     </Card>
                 </div>

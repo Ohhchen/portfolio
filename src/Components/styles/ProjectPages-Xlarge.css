@@ -1,4 +1,8 @@
 @media only screen and (min-width: 1200px) {
+    html{
+        scroll-behavior: smooth;
+    }
+    
     .navbar {
         display: flex;
         flex-direction: row;
