@@ -25,7 +25,10 @@ const HopelandSystems = ({ backToHome, nextProject }) => {
 
     return (
         <>{navBarExpanded ?
-            <div className="navbar-active">
+            <motion.div className="navbar-active"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ type: 'spring', ease: 'linear' }}>
                 <motion.div whileHover={{ scale: 1.5 }}>
                     <IoCloseSharp size={'4em'} color={'#005FED'} onClick={() => setNavBarExpanded(false)} />
                 </motion.div>
@@ -35,7 +38,7 @@ const HopelandSystems = ({ backToHome, nextProject }) => {
                         About
                     </a>
                 </Button>
-            </div>
+            </motion.div>
             :
             <div className="navbar">
                 <motion.div whileHover={{ scale: 1.5 }}>
@@ -45,10 +48,20 @@ const HopelandSystems = ({ backToHome, nextProject }) => {
         }
             <div className='container'>
                 <div className='about-projects'>
-                    <div className='projectTitle'>
+                    <motion.div
+                        className='projectTitle'
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.3, delay: 0.2 }}>
                         <Text textStyle='h1' color='base.black'>Hopeland System</Text>
-                    </div>
-                    <div className='cards'>
+                    </motion.div>
+                    <motion.div
+                        className='cards'
+                        initial={{ opacity: 0, y: 500 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}>
                         <Card variant='projects'>
                             <CardHeader>
                                 <Text textStyle='h3_card' color='blue.dark'>Mission</Text>
@@ -75,8 +88,13 @@ const HopelandSystems = ({ backToHome, nextProject }) => {
                                 </li>
                             </CardBody>
                         </Card>
-                    </div>
-                    <div className='cards'>
+                    </motion.div>
+                    <motion.div
+                        className='cards'
+                        initial={{ opacity: 0, y: 500 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}>
                         <Card variant='projects'>
                             <CardHeader>
                                 <Text textStyle='h3_card' color='blue.dark'>Tech Stack</Text>
@@ -134,9 +152,14 @@ const HopelandSystems = ({ backToHome, nextProject }) => {
                                 </div>
                             </CardBody>
                         </Card>
-                    </div>
+                    </motion.div>
                 </div>
-                <div className='pictures-container'>
+                <motion.div
+                    className='pictures-container'
+                    initial={{ opacity: 0, y: 500 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}>
                     <Text textStyle='h2' color='base.black'>The Finished Product - Website</Text>
                     <div className='pictures'>
                         <img src={image1} height='792' alt="" />
@@ -145,8 +168,13 @@ const HopelandSystems = ({ backToHome, nextProject }) => {
                         <img src={image4} height='792' alt="" />
                         <img src={image5} height='792' alt="" />
                     </div>
-                </div>
-                <div className='pictures-container'>
+                </motion.div>
+                <motion.div
+                    className='pictures-container'
+                    initial={{ opacity: 0, y: 500 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}>
                     <Text textStyle='h2' color='base.black'>The Finished Product - Product</Text>
                     <div className='pictures'>
                         <img src={image6} height='792' alt="" />
@@ -155,7 +183,7 @@ const HopelandSystems = ({ backToHome, nextProject }) => {
                         <img src={image9} height='792' alt="" />
                         <img src={image10} height='792' alt="" />
                     </div>
-                </div>
+                </motion.div>
                 <div className='nav-buttons'>
                     <Button variant='secondary' onClick={() => { backToHome(); window.scrollTo(0, 0); }}>Back to Home</Button>
                     <Button variant='tiertiary' onClick={() => { nextProject(); window.scrollTo(0, 0); }} å>Next Project</Button>

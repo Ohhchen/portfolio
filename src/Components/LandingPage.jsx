@@ -175,7 +175,10 @@ const LandingPage = ({ }) => {
         <Box bg='base.white' width={['100%', '100%', '100%', '100%', '100%', '100%']}>
             {!projectSelected &&
                 <>{navBarExpanded ?
-                    <div className="navbar-active">
+                    <motion.div className="navbar-active"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ type: 'spring', ease: 'linear' }}>
                         <motion.div whileHover={{ scale: 1.5 }}>
                             <IoCloseSharp size={'4em'} color={'#005FED'} onClick={() => setNavBarExpanded(false)} />
                         </motion.div>
@@ -190,10 +193,14 @@ const LandingPage = ({ }) => {
                             </a>
                         </Button>
                         <Button variant='link' onClick={() => { setCedarCms(true); setProjectSelected(true); window.scrollTo(0, 0); }}>Work</Button>
-                    </div>
+                    </motion.div>
                     :
                     <div className="navbar">
-                        <motion.div whileHover={{ scale: 1.5 }}>
+                        <motion.div
+                            whileHover={{ scale: 1.5 }}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 1, delay: 0.5 }}>
                             <GiHamburgerMenu size={'3em'} className={pageScrolled ? 'navbar-scrolled' : 'navbar-unscrolled'} onClick={() => setNavBarExpanded(true)} />
                         </motion.div>
                     </div>
@@ -202,12 +209,22 @@ const LandingPage = ({ }) => {
             {!projectSelected &&
                 <div className="hero">
                     <div className="hero-top">
-                        <Box width={['200px', '200px', '500px', '500px', '900px', '900px']}>
+                        <Box width={['200px', '200px', '500px', '500px', '900px', '900px']}
+                            as={motion.div}
+                            viewport={{ once: true }}
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            transition={{ duration: 0.8, delay: 1 }}>
                             <img src={landingPortrait} width='100%' />
                         </Box>
-                        <div className="hero-top">
+                        <motion.div
+                            className="hero-top"
+                            viewport={{ once: true }}
+                            initial={{ x: -200, scale: 1.5 }}
+                            whileInView={{ x: 0, scale: 1 }}
+                            transition={{ duration: 0.8, delay: 0.3 }}>
                             <Text textStyle='h1' color='base.white'>Olivia Chen</Text>
-                        </div>
+                        </motion.div>
                     </div>
                     <div className="carousel-container">
                         <div className="carousel-track">
@@ -223,7 +240,11 @@ const LandingPage = ({ }) => {
                 </div>}
             {!projectSelected &&
                 <div className="whoami" id='whoami'>
-                    <div className="whoami-left">
+                    <motion.div className="whoami-left"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 1, duration: 0.8 }}>
                         <div>
                             <Text textStyle='h2' color='blue.dark'>Who am I?</Text>
                         </div>
@@ -233,27 +254,44 @@ const LandingPage = ({ }) => {
                         <div>
                             <Text textStyle='p' color='blue.dark'>I am most experienced as a Project Manager but I worked mostly in small teams where I need to help out with different aspects of the project, so I also have UX/UI design and web develpment experience.</Text>
                         </div>
-                    </div>
-                    <div className="whoami-right">
+                    </motion.div>
+                    <motion.div className="whoami-right"
+                        viewport={{ once: true }}
+                        initial={{ x: 200, opacity: 0 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 1.5, duration: 0.8 }}>
                         <Box width={['200px', '200px', '500px', 'auto', 'auto', 'auto']}>
                             <img src={aboutPortrait} />
                         </Box>
-                    </div>
+                    </motion.div>
                 </div>}
             {!projectSelected &&
                 <div className="whatdoido">
                     <Box bg='blue.dark' style={{ width: '100%' }}>
                         <div className="whatdoido-left">
-                            <div>
+                            <motion.div
+                                viewport={{ once: true }}
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                transition={{ duration: 0.5 }}>
                                 <Text textStyle='h2' color='base.white'>What do I do?</Text>
                                 <Text textStyle='p_s' color='base.white'>Start by selecting one of the domains below</Text>
-                            </div>
+                            </motion.div>
                             <div>
                                 <div className="whatdoido-examples">
-                                    <div>
+                                    <motion.div
+                                        viewport={{ once: true }}
+                                        initial={{ opacity: 0 }}
+                                        whileInView={{ opacity: 1 }}
+                                        transition={{ type: "spring", stiffness: 100, delay: 0.5 }}>
                                         <Text textStyle='h4' color='base.white'>Here are some examples of what I do</Text>
-                                    </div>
-                                    <div className="whatdoido-examples-buttons">
+                                    </motion.div>
+                                    <motion.div
+                                        className="whatdoido-examples-buttons"
+                                        viewport={{ once: true }}
+                                        initial={{ opacity: 0, y: -200 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.5 }}>
                                         <Button variant={projectManagement ? 'primaryClicked' : 'primary'}
                                             onClick={() => {
                                                 setDomainFiltered(true);
@@ -294,10 +332,10 @@ const LandingPage = ({ }) => {
                                                 setIllustration(false);
                                                 setDataAnalysis(false);
                                             }}>Branding</Button>
-                                    </div>
+                                    </motion.div>
                                 </div>
                             </div>
-                            <div className="whatdoido-examples">
+                            {/* <div className="whatdoido-examples">
                                 <div>
                                     <Text textStyle='h4' color='base.white'>Here are some examples of what I would like to do more of</Text>
                                 </div>
@@ -323,13 +361,17 @@ const LandingPage = ({ }) => {
                                             setDataAnalysis(true);
                                         }}>Data Analysis</Button>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </Box>
                     {domainFiltered &&
                         <div className="whatdoido-right">
                             {projectManagement &&
-                                <div className={changeBackground()}>
+                                <motion.div className={changeBackground()}
+                                    viewport={{ once: true }}
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0.8, delay: 0.2 }}>
                                     <motion.div whileHover={{ scale: 1.2 }}>
                                         <Button
                                             variant='link'
@@ -363,10 +405,15 @@ const LandingPage = ({ }) => {
                                                 window.scrollTo(0, 0);
                                             }}>SXG Twine Game</Button>
                                     </motion.div>
-                                </div>
+                                </motion.div>
                             }
                             {design &&
-                                <div className={changeBackground()}>
+                                <motion.div
+                                    className={changeBackground()}
+                                    viewport={{ once: true }}
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0.8, delay: 0.2 }}>
                                     <motion.div whileHover={{ scale: 1.2 }}>
                                         <Button
                                             variant='link'
@@ -410,10 +457,15 @@ const LandingPage = ({ }) => {
                                                 window.scrollTo(0, 0);
                                             }}>SXG Twine Game</Button>
                                     </motion.div>
-                                </div>
+                                </motion.div>
                             }
                             {webDev &&
-                                <div className={changeBackground()}>
+                                <motion.div
+                                    className={changeBackground()}
+                                    viewport={{ once: true }}
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0.8, delay: 0.2 }}>
                                     <motion.div whileHover={{ scale: 1.2 }}>
                                         <Button
                                             variant='link'
@@ -451,17 +503,22 @@ const LandingPage = ({ }) => {
                                                 setProjectSelected(true)
                                             }}>Smímeyale Socials</Button>
                                     </motion.div>
-                                </div>
+                                </motion.div>
                             }
                             {branding &&
-                                <div className="whatdoido-right-selection">
+                                <motion.div
+                                    className="whatdoido-right-selection"
+                                    viewport={{ once: true }}
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0.8, delay: 0.2 }}>
                                     <motion.div whileHover={{ scale: 1.2 }}>
                                         <Button variant='link'
                                             onClick={() => {
                                                 setProjectSelected(true)
                                             }}>Smímeyale Socials</Button>
                                     </motion.div>
-                                </div>
+                                </motion.div>
                             }
                             {illustration &&
                                 <div className="whatdoido-right-selection">
@@ -482,10 +539,19 @@ const LandingPage = ({ }) => {
             {!projectSelected &&
                 <div className="skills">
                     <div className="skills-top">
-                        <div>
+                        <motion.div
+                            viewport={{ once: true }}
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            transition={{ ease: 'linear', duration: 0.8, delay: 1 }}>
                             <Text textStyle='h2' color='blue.dark'>Skills</Text>
-                        </div>
-                        <div className="skills-top-buttons">
+                        </motion.div>
+                        <motion.div
+                            className="skills-top-buttons"
+                            viewport={{ once: true }}
+                            initial={{ opacity: 0, x: 500 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 1, delay: 1 }}>
                             <Button variant={hardSkills ? 'secondaryClicked' : 'secondary'}
                                 onClick={() => {
                                     filterSkills('hardSkills');
@@ -530,11 +596,15 @@ const LandingPage = ({ }) => {
                                     setDevSkills(false);
                                     setAllSkills(true);
                                 }}>Clear Filters</Button>
-                        </div>
+                        </motion.div>
                     </div>
                     <div className="skills-bottom">
                         {allSkills &&
-                            <div className="skills-bottom-container">
+                            <motion.div
+                                className="skills-bottom-container"
+                                initial={{ opacity: 0, y: 500 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ ease: 'linear', duration: 0.5, delay: 0.3 }}>
                                 <List variant='skills'>
                                     <div style={{ padding: '10px', background: '#005FED' }}>
                                         <Text textStyle='p_bold' color='base.white'>I would say I'm excellent with: </Text>
@@ -574,14 +644,18 @@ const LandingPage = ({ }) => {
                                         </ListItem>
                                     )}
                                 </List>
-                            </div>
+                            </motion.div>
                         }
                         {hardSkills &&
-                            <div className="skills-bottom-container">
+                            <motion.div
+                                className="skills-bottom-container"
+                                initial={{ opacity: 0, y: 500 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ ease: 'linear', duration: 0.5, delay: 0.3 }}>
                                 <List variant='skills'>
-                                    <motion.div style={{ padding: '10px', background: '#005FED' }}>
+                                    <div style={{ padding: '10px', background: '#005FED' }}>
                                         <Text textStyle='p_bold' color='base.white'>I would say I'm excellent with: </Text>
-                                    </motion.div>
+                                    </div>
                                     {hardSkillsList.map((skill, index) =>
                                         skill.size == 'large' &&
                                         <ListItem key={index}>
@@ -617,10 +691,14 @@ const LandingPage = ({ }) => {
                                         </ListItem>
                                     )}
                                 </List>
-                            </div>
+                            </motion.div>
                         }
                         {softSkills &&
-                            <div className="skills-bottom-container">
+                            <motion.div
+                                className="skills-bottom-container"
+                                initial={{ opacity: 0, y: 500 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ ease: 'linear', duration: 0.5, delay: 0.3 }}>
                                 <List variant='skills'>
                                     <div style={{ padding: '10px', background: '#005FED' }}>
                                         <Text textStyle='p_bold' color='base.white'>I would say I'm excellent with: </Text>
@@ -647,10 +725,14 @@ const LandingPage = ({ }) => {
                                         </ListItem>
                                     )}
                                 </List>
-                            </div>
+                            </motion.div>
                         }
                         {designSkills &&
-                            <div className="skills-bottom-container">
+                            <motion.div
+                                initial={{ opacity: 0, y: 500 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ ease: 'linear', duration: 0.5, delay: 0.3 }}
+                                className="skills-bottom-container">
                                 <List variant='skills'>
                                     <div style={{ padding: '10px', background: '#005FED' }}>
                                         <Text textStyle='p_bold' color='base.white'>I would say I'm excellent with: </Text>
@@ -690,10 +772,14 @@ const LandingPage = ({ }) => {
                                         </ListItem>
                                     )}
                                 </List>
-                            </div>
+                            </motion.div>
                         }
                         {devSkills &&
-                            <div className="skills-bottom-container">
+                            <motion.div
+                                initial={{ opacity: 0, y: 500 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ ease: 'linear', duration: 0.5, delay: 0.3 }}
+                                className="skills-bottom-container">
                                 <List variant='skills'>
                                     <div style={{ padding: '10px', background: '#005FED' }}>
                                         <Text textStyle='p_bold' color='base.white'>I would say I'm excellent with: </Text>
@@ -733,7 +819,7 @@ const LandingPage = ({ }) => {
                                         </ListItem>
                                     )}
                                 </List>
-                            </div>
+                            </motion.div>
                         }
                     </div>
                 </div>}
@@ -767,22 +853,40 @@ const LandingPage = ({ }) => {
             <Box bg="blue.dark">
                 <div className="footer">
                     <div className="footer-left">
-                        <Box width={['200px', '200px', '500px', 'auto', 'auto', 'auto']}>
+                        <Box width={['200px', '200px', '500px', 'auto', 'auto', 'auto']}
+                            as={motion.div}
+                            initial={{ opacity: 0 }}
+                            viewport={{ once: true }}
+                            whileInView={{ opacity: 1 }}
+                            transition={{ duration: 1, delay: 0.3 }}>
                             <img src={footerPortrait} />
                         </Box>
                     </div>
                     <div className="footer-right">
-                        <div>
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            viewport={{ once: true }}
+                            whileInView={{ opacity: 1 }}
+                            transition={{ duration: 1, delay: 0.2, ease: 'linear' }}>
                             <Text textStyle='h2' color='base.white'>Interested in working with me?</Text>
-                        </div>
-                        <div>
+                        </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            viewport={{ once: true }}
+                            whileInView={{ opacity: 1 }}
+                            transition={{ duration: 1, delay: 0.2, ease: 'linear' }}>
                             <Text textStyle='p' color='base.white' style={{ textAlign: 'justify' }}>The work I showcased here are my strongest design disciplines however, this is just a capsule of what I am capable of. Let's get in touch!</Text>
-                        </div>
-                        <div className="links">
+                        </motion.div>
+                        <motion.div
+                            className="links"
+                            initial={{ opacity: 0, x: 300 }}
+                            viewport={{ once: true }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 1, delay: 0.5, ease: 'linear' }}>
                             <Button variant='link' color='base.white' onClick={() => openEmailLink('ochen0909@gmail.com')}><AiOutlineMail /></Button>
                             <Button variant='link' color='base.white' onClick={() => openInNewTab('https://www.linkedin.com/in/olivia-chen-26bba9245/')}><FaLinkedin /></Button>
                             <Button variant='link' color='base.white' onClick={() => openInNewTab('https://github.com/Ohhchen')}><FaGithub /></Button>
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
             </Box>

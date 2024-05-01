@@ -21,7 +21,10 @@ const CEDaRCMS = ({ backToHome, nextProject }) => {
 
     return (
         <>{navBarExpanded ?
-            <div className="navbar-active">
+            <motion.div className="navbar-active"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ type: 'spring', ease: 'linear' }}>
                 <motion.div whileHover={{ scale: 1.5 }}>
                     <IoCloseSharp size={'4em'} color={'#005FED'} onClick={() => setNavBarExpanded(false)} />
                 </motion.div>
@@ -31,7 +34,7 @@ const CEDaRCMS = ({ backToHome, nextProject }) => {
                         About
                     </a>
                 </Button>
-            </div>
+            </motion.div>
             :
             <div className="navbar">
                 <motion.div whileHover={{ scale: 1.5 }}>
@@ -41,10 +44,20 @@ const CEDaRCMS = ({ backToHome, nextProject }) => {
         }
             <div className='container'>
                 <div className='about-projects'>
-                    <div className='projectTitle'>
+                    <motion.div
+                        className='projectTitle'
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.3, delay: 0.2 }}>
                         <Text textStyle='h1' color='base.black'>CEDaR CMS</Text>
-                    </div>
-                    <div className='cards'>
+                    </motion.div>
+                    <motion.div
+                        className='cards'
+                        initial={{ opacity: 0, y: 500 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}>
                         <Card variant='projects'>
                             <CardHeader>
                                 <Text textStyle='h3_card' color='blue.dark'>Mission</Text>
@@ -61,8 +74,13 @@ const CEDaRCMS = ({ backToHome, nextProject }) => {
                                 <Text textStyle='p' color='blue.dark'>After researching and reviewing the CMS options available, we decided to build our own because each community’s protocol is different, therefore the context required with data will be different. In order to customize context to each community, we have made the CMS scalable to each project and community's needs.</Text>
                             </CardBody>
                         </Card>
-                    </div>
-                    <div className='cards'>
+                    </motion.div>
+                    <motion.div
+                        className='cards'
+                        initial={{ opacity: 0, y: 500 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}>
                         <Card variant='projects'>
                             <CardHeader>
                                 <Text textStyle='h3_card' color='blue.dark'>Tech Stack</Text>
@@ -135,9 +153,14 @@ const CEDaRCMS = ({ backToHome, nextProject }) => {
                                 </div>
                             </CardBody>
                         </Card>
-                    </div>
+                    </motion.div>
                 </div>
-                <div className='pictures-container'>
+                <motion.div
+                    className='pictures-container'
+                    initial={{ opacity: 0, y: 500 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}>
                     <Text textStyle='h2' color='base.black'>The Finished Product</Text>
                     <div className='pictures'>
                         <img src={image1} height='792' alt="" />
@@ -147,12 +170,12 @@ const CEDaRCMS = ({ backToHome, nextProject }) => {
                         <img src={image5} height='792' alt="" />
                         <img src={image6} height='792' alt="" />
                     </div>
-                </div>
+                </motion.div>
                 <div className='nav-buttons'>
                     <Button variant='secondary' onClick={() => { backToHome(); window.scrollTo(0, 0); }}>Back to Home</Button>
                     <Button variant='tiertiary' onClick={() => { nextProject(); window.scrollTo(0, 0); }}>Next Project</Button>
                 </div>
-            </div></>
+            </div ></>
     )
 }
 
