@@ -322,7 +322,7 @@ const LandingPage = ({ }) => {
                                                 setIllustration(false);
                                                 setDataAnalysis(false);
                                             }}>Web development</Button>
-                                        <Button variant={branding ? 'primaryClicked' : 'primary'}
+                                        {/* <Button variant={branding ? 'primaryClicked' : 'primary'}
                                             onClick={() => {
                                                 setDomainFiltered(true);
                                                 setBranding(true);
@@ -331,7 +331,7 @@ const LandingPage = ({ }) => {
                                                 setProjectManagement(false);
                                                 setIllustration(false);
                                                 setDataAnalysis(false);
-                                            }}>Branding</Button>
+                                            }}>Branding</Button> */}
                                     </motion.div>
                                 </div>
                             </div>
@@ -497,12 +497,12 @@ const LandingPage = ({ }) => {
                                                 window.scrollTo(0, 0);
                                             }}>SXG Twine Game</Button>
                                     </motion.div>
-                                    <motion.div whileHover={{ scale: 1.2 }}>
+                                    {/* <motion.div whileHover={{ scale: 1.2 }}>
                                         <Button variant='link'
                                             onClick={() => {
                                                 setProjectSelected(true)
                                             }}>Smímeyale Socials</Button>
-                                    </motion.div>
+                                    </motion.div> */}
                                 </motion.div>
                             }
                             {branding &&
@@ -551,7 +551,7 @@ const LandingPage = ({ }) => {
                             viewport={{ once: true }}
                             initial={{ opacity: 0, x: 500 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 1, delay: 1 }}>
+                            transition={{ duration: 0.8, delay: 0.5 }}>
                             <Button variant={hardSkills ? 'secondaryClicked' : 'secondary'}
                                 onClick={() => {
                                     filterSkills('hardSkills');
